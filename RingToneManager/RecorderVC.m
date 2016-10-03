@@ -1,0 +1,395 @@
+//
+//  KBViewController.m
+//  iReversePlay
+//
+//  Created by Kiran on 2/2/13.
+//  Copyright (c) 2013 Kiran. All rights reserved.
+//
+
+#import "RecorderVC.h"
+#import "Utility.h"
+#import "SongInfo.h"
+#import "Constant.h"
+@interface RecorderVC ()
+
+- (void)prepareToRecord;
+- (void)startRecording;
+- (void)stopRecording;
+- (BOOL)startAudioSession;
+- (void)startPlaying;
+- (void)stopPlaying;
+- (void)startPulseEffectOnButton;
+- (void)stopPulseEffectOnButton;
+
+@property (strong) AVAudioSession *session;
+@property (strong) AVAudioRecorder *recorder;
+@property (strong) AVAudioPlayer *player;
+@property (strong) NSURL *recordedAudioUrl;
+@property (strong) NSURL *flippedAudioUrl;
+@property (assign) ePlayerStatusType currentState;
+
+@property (strong) NSMutableArray *savedFilesArray;
+
+
+@end
+
+#pragma mark -
+
+@implementation RecorderVC
+
+@synthesize session;
+@synthesize recorder;
+@synthesize player;
+@synthesize recordedAudioUrl;
+@synthesize flippedAudioUrl;
+@synthesize currentState;
+
+#pragma mark -
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    self.currentState = eRecordableState;
+    if ([self startAudioSession])
+    {
+        [self prepareToRecord];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(!self.savedFilesArray)
+    self.savedFilesArray=[Utility GetAllFiles];
+}
+
+#pragma mark -
+#pragma mark Action methods
+#pragma mark -
+-(IBAction)record:(id)sender
+{
+    switch (self.currentState)
+    {
+        case eRecordableState:
+        {
+            self.currentState = eRecordingState;
+            [self startRecording];
+            [sender setImage:[UIImage imageNamed:@"bt_Stop.png"] forState:UIControlStateNormal];
+            [self startPulseEffectOnButton];
+        }
+            break;
+            
+        case eRecordingState:
+        {
+            self.currentState = ePlayableState;
+            [self.maskView setHidden:NO];
+            [self performSelectorInBackground:@selector(stopRecording) withObject:nil];
+            [sender setImage:[UIImage imageNamed:@"bt_Play.png"] forState:UIControlStateNormal];
+            [self stopPulseEffectOnButton];
+        }
+            break;
+            
+        case ePlayableState:
+        {
+            self.currentState = ePlayingState;
+            [self startPlaying];
+            self.textImageView.image = [UIImage imageNamed:@"txt_Playback.png"];
+            [sender setImage:[UIImage imageNamed:@"bt_Stop.png"] forState:UIControlStateNormal];
+            [self startPulseEffectOnButton];
+        }
+            break;
+            
+        case ePlayingState:
+        {
+            self.currentState = eRecordableState;
+            [self stopPlaying];
+            [sender setImage:[UIImage imageNamed:@"bt_Record.png"] forState:UIControlStateNormal];
+            self.textImageView.image = [UIImage imageNamed:@"txt_ReadMe.png"];
+            [self stopPulseEffectOnButton];
+            
+            //Delete the flipped song
+            NSError *error;
+            if(![[NSFileManager defaultManager] removeItemAtURL:self.flippedAudioUrl error:&error])
+                NSLog(@"Error: %@", [error localizedDescription]);
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+
+#pragma mark -
+#pragma mark AVAudioPlayerDelegate methods
+#pragma mark -
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    NSLog(@"audioPlayerDidFinishPlaying");
+    [self.button setImage:[UIImage imageNamed:@"bt_Record.png"] forState:UIControlStateNormal];
+    self.textImageView.image = [UIImage imageNamed:@"txt_ReadMe.png"];
+    self.currentState = eRecordableState;
+    [self stopPulseEffectOnButton];
+    NSError *error;
+    if(![[NSFileManager defaultManager] removeItemAtURL:self.flippedAudioUrl error:&error])
+        NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
+{
+    NSLog(@"audioRecorderDidFinishRecording");
+    NSLog(@"File saved to %@", [[self.recordedAudioUrl path] lastPathComponent]);
+}
+
+
+#pragma mark -
+#pragma mark Private methods
+#pragma mark -
+
+- (void) stopRecording
+{
+    [self.recorder stop];
+    
+    /*
+     As each sample is 16-bits in size(2 bytes)(mono channel).
+     You can load each sample at a time by copying it into a different buffer by starting at the end of the recording and
+     reading backwards. When you get to the start of the data you have reversed the data and playing will be reversed.
+     */
+    
+    // set up output file
+//    AudioFileID outputAudioFile;
+//    AudioStreamBasicDescription myPCMFormat;
+//    myPCMFormat.mSampleRate = 16000.00;
+//    myPCMFormat.mFormatID = kAudioFormatLinearPCM ;
+//    myPCMFormat.mFormatFlags =  kAudioFormatFlagsCanonical;
+//    myPCMFormat.mChannelsPerFrame = 1;
+//    myPCMFormat.mFramesPerPacket = 1;
+//    myPCMFormat.mBitsPerChannel = 16;
+//    myPCMFormat.mBytesPerPacket = 2;
+//    myPCMFormat.mBytesPerFrame = 2;
+//    
+//    
+//    AudioFileCreateWithURL((__bridge CFURLRef)self.flippedAudioUrl,
+//                           kAudioFileCAFType,
+//                           &myPCMFormat,
+//                           kAudioFileFlags_EraseFile,
+//                           &outputAudioFile);
+//    // set up input file
+//    AudioFileID inputAudioFile;
+//    OSStatus theErr = noErr;
+//    UInt64 fileDataSize = 0;
+//    
+//    AudioStreamBasicDescription theFileFormat;
+//    UInt32 thePropertySize = sizeof(theFileFormat);
+//    
+//    theErr = AudioFileOpenURL((__bridge CFURLRef)self.recordedAudioUrl, kAudioFileReadPermission, 0, &inputAudioFile);
+//    
+//    thePropertySize = sizeof(fileDataSize);
+//    theErr = AudioFileGetProperty(inputAudioFile, kAudioFilePropertyAudioDataByteCount, &thePropertySize, &fileDataSize);
+//    
+//    UInt32 dataSize = fileDataSize;
+//    void* theData = malloc(dataSize);
+//    
+//    //Read data into buffer
+//    UInt32 readPoint  = dataSize;
+//    UInt32 writePoint = 0;
+//    while( readPoint > 0 )
+//    {
+//        UInt32 bytesToRead = 2;
+//        AudioFileReadBytes( inputAudioFile, false, readPoint, &bytesToRead, theData );
+//        AudioFileWriteBytes( outputAudioFile, false, writePoint, &bytesToRead, theData );
+//        writePoint += 2;
+//        readPoint -= 2;
+//    }
+//    
+//    free(theData);
+//    AudioFileClose(inputAudioFile);
+//    AudioFileClose(outputAudioFile);
+    //Also delete the recorded audio
+    NSError *error;
+//    if (![[NSFileManager defaultManager] removeItemAtURL:self.recordedAudioUrl error:&error])
+//        NSLog(@"Error: %@", [error localizedDescription]);
+    
+    dispatch_async(dispatch_get_main_queue(), ^
+    {
+        [self.maskView setHidden:YES];
+        self.maskView.hidden=true;
+        //[self.maskView performSelectorOnMainThread:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
+    });
+
+    //[self.maskView performSelectorOnMainThread:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
+}
+
+
+- (void)startRecording
+{
+    [self prepareToRecord];
+    if (![self.recorder record])
+    {
+        NSLog(@"Error: Record failed");
+    }
+}
+
+-(void)prepareToRecord
+{
+    NSError *error;
+    
+    // Recording settings
+    NSMutableDictionary *settings = [NSMutableDictionary dictionary];
+    [settings setValue: [NSNumber numberWithInt:kAudioFormatAppleLossless] forKey:AVFormatIDKey];
+    [settings setValue: [NSNumber numberWithFloat:12000.00] forKey:AVSampleRateKey];
+    [settings setValue: [NSNumber numberWithInt: 1] forKey:AVNumberOfChannelsKey]; // mono
+    [settings setValue: [NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+    [settings setValue: [NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
+    [settings setValue: [NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
+    
+    // File URL
+    
+    NSString *recordPath= [DOCUMENTS_FOLDER stringByAppendingPathComponent:@"test"];
+    NSDateFormatter *formatter;
+    NSString        *dateString;
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"ddMMyyyyHHmmss"];
+    dateString = [formatter stringFromDate:[NSDate date]];
+    
+    recordPath= [recordPath stringByAppendingString:dateString];
+    recordPath=[ recordPath stringByAppendingPathExtension:@"m4a"];
+
+    self.recordedAudioUrl = [[NSURL alloc ] initFileURLWithPath:recordPath];
+    
+    NSString *flippedPath= [DOCUMENTS_FOLDER stringByAppendingPathComponent:@"result"];
+    //flippedPath= [flippedPath stringByAppendingPathExtension:@".m4a"];
+
+    self.flippedAudioUrl = [[NSURL alloc ] initFileURLWithPath:flippedPath];
+    
+    // Create recorder
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:self.recordedAudioUrl settings:settings error:&error];
+    if (!self.recorder)
+    {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }
+    
+    // Initialize degate, metering, etc.
+    self.recorder.delegate = self;
+    
+    if (![self.recorder prepareToRecord])
+    {
+        NSLog(@"Error: Prepare to record failed");
+    }
+}
+
+
+-(void)startPlaying
+{
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.flippedAudioUrl error:nil];
+    player.delegate = self;
+    if(![self.player play])
+    {
+        NSLog(@"Error: Play failed");
+    }
+}
+
+-(void)stopPlaying
+{
+    [self.player stop];
+}
+
+
+- (BOOL) startAudioSession
+{
+    NSLog(@"startAudioSession");
+    // Prepare the audio session
+    NSError *error;
+    self.session = [AVAudioSession sharedInstance];
+    
+    if (![self.session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error])
+    {
+        NSLog(@"Error: %@", [error localizedDescription]);
+        return NO;
+    }
+    
+    if (![self.session setActive:YES error:&error])
+    {
+        NSLog(@"Error: %@", [error localizedDescription]);
+        return NO;
+    }
+    UInt32 ASRoute = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty (
+                             kAudioSessionProperty_OverrideAudioRoute,
+                             sizeof (ASRoute),
+                             &ASRoute
+                             );
+    return self.session.inputAvailable;//make sure ;)
+}
+
+
+-(void)startPulseEffectOnButton
+{
+    CABasicAnimation *theAnimation;
+    theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+    theAnimation.duration=0.8;
+    theAnimation.repeatCount=HUGE_VALF;
+    theAnimation.autoreverses=YES;
+    theAnimation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    theAnimation.toValue=[NSNumber numberWithFloat:0.3];
+    [self.button.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+}
+- (IBAction)shareclick:(id)sender
+{
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Name Your audio"
+                                          message:@""
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+     {
+         //textField.placeholder = NSLocalizedString(@"Enter Name", musichFilePath.path);
+         textField.text = [NSString stringWithFormat:@"Audio %lu", (unsigned long)self.savedFilesArray.count];
+     }];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   UITextField *txtRingtone = alertController.textFields.firstObject;
+                                   if(txtRingtone.text.length<=0)
+                                   {
+                                       [self presentViewController:alertController animated:YES completion:nil];
+                                       return ;
+                                   }
+                                   SongInfo *song = [SongInfo new];
+                                   song.title = txtRingtone.text;
+                                   song.displayName = txtRingtone.text;
+                                   song.songUrl = self.recordedAudioUrl.path;
+                                   [self.savedFilesArray addObject:song];
+                                   [Utility SaveAllFilesArray:self.savedFilesArray];
+                               }];
+    
+    [alertController addAction:okAction];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                         }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+-(void)stopPulseEffectOnButton
+{
+    [self.button.layer removeAnimationForKey:  @"animateOpacity"];
+}
+
+
+
+@end
