@@ -22,6 +22,8 @@
 #import "IQCropSelectionEndView.h"
 #import "Utility.h"
 
+#import "GADMasterViewController.h"
+
 #define DOCUMENTS_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 
 @interface ViewController ()<MPMediaPickerControllerDelegate, IQ_FDWaveformViewDelegate>
@@ -34,6 +36,7 @@
     IQCropSelectionView *leftCropView;
     IQCropSelectionView *rightCropView;
     NSString *strSongTitle;
+    GADMasterViewController *adViewSharedInstance;
 }
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFilePath;
@@ -48,6 +51,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStartTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblEndTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblSongName;
+
+@property (weak, nonatomic) IBOutlet UIView *adView;
+
 
 @end
 
@@ -79,7 +85,10 @@ double distance = 0.2;
     
     middleContainerView = [[UIView alloc] initWithFrame:frame];
     middleContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
-
+    
+    _adView.backgroundColor = [UIColor clearColor];
+    adViewSharedInstance    = [GADMasterViewController singleton];
+    [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -140,6 +149,14 @@ double distance = 0.2;
                                                          }];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - Google BannerAd Custom delegate
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    for(UIView *tempView in _adView.subviews) {
+        [tempView removeFromSuperview];
+    }
+    [_adView addSubview:adView];
 }
 
 -(void)saveRingtone:(NSString*)RingToneFileName
