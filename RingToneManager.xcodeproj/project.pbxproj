@@ -160,7 +160,7 @@
 		BDC712E01D0F1BF000B1E29A /* SongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCell.h; sourceTree = "<group>"; };
 		BDC712E11D0F1BF000B1E29A /* SongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCell.m; sourceTree = "<group>"; };
 		BDC712E21D0F1BF000B1E29A /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
-		D48FFB521D0084A0008D4E74 /* RingToneManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RingToneManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D48FFB521D0084A0008D4E74 /* SmartRingtoneMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartRingtoneMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48FFB561D0084A0008D4E74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D48FFB581D0084A0008D4E74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D48FFB591D0084A0008D4E74 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		D48FFB531D0084A0008D4E74 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D48FFB521D0084A0008D4E74 /* RingToneManager.app */,
+				D48FFB521D0084A0008D4E74 /* SmartRingtoneMaker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,7 +438,7 @@
 			);
 			name = RingToneManager;
 			productName = RingToneManager;
-			productReference = D48FFB521D0084A0008D4E74 /* RingToneManager.app */;
+			productReference = D48FFB521D0084A0008D4E74 /* SmartRingtoneMaker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -452,7 +452,7 @@
 				TargetAttributes = {
 					D48FFB511D0084A0008D4E74 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = P8MW4V459E;
+						DevelopmentTeam = 9YG7G7YB2J;
 					};
 				};
 			};
@@ -588,8 +588,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Halford (D4XB9FSV8Q)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Halford (D4XB9FSV8Q)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -611,7 +609,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "721ba160-b8e0-4a1e-82ad-62c9e63af2d7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -634,8 +631,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -650,7 +645,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "721ba160-b8e0-4a1e-82ad-62c9e63af2d7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -662,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Halford (D4XB9FSV8Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RingToneManager/Wave",
@@ -670,9 +664,9 @@
 				INFOPLIST_FILE = RingToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appster.marketplace;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "721ba160-b8e0-4a1e-82ad-62c9e63af2d7";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobirizer.ringtonemaker;
+				PRODUCT_NAME = SmartRingtoneMaker;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RingToneManager/RingToneManager-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -684,7 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RingToneManager/Wave",
@@ -692,9 +686,9 @@
 				INFOPLIST_FILE = RingToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appster.marketplace;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "721ba160-b8e0-4a1e-82ad-62c9e63af2d7";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobirizer.ringtonemaker;
+				PRODUCT_NAME = SmartRingtoneMaker;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RingToneManager/RingToneManager-Bridging-Header.h";
 			};
 			name = Release;
