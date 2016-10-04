@@ -37,6 +37,7 @@
     IQCropSelectionView *rightCropView;
     NSString *strSongTitle;
     GADMasterViewController *adViewSharedInstance;
+    //Changes by Rishi
 }
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFilePath;
