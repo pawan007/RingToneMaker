@@ -36,6 +36,8 @@
 		08D9E6F51D899B9600810E64 /* IQCropSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D9E6F21D899B9600810E64 /* IQCropSelectionView.m */; };
 		08D9E6F91D899BD900810E64 /* IQ_FDWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D9E6F81D899BD900810E64 /* IQ_FDWaveformView.m */; };
 		08D9E6FC1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D9E6FB1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.m */; };
+		08E7EF401DA8F1C200F03E70 /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E7EF3D1DA8F1C100F03E70 /* MBCircularProgressBarLayer.m */; };
+		08E7EF411DA8F1C200F03E70 /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E7EF3F1DA8F1C100F03E70 /* MBCircularProgressBarView.m */; };
 		BD01F81F1D1071110078E0C3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD01F81E1D1071100078E0C3 /* QuartzCore.framework */; };
 		BD01F82F1D10717B0078E0C3 /* background-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8221D10717B0078E0C3 /* background-gradient.png */; };
 		BD01F8301D10717B0078E0C3 /* background-gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8231D10717B0078E0C3 /* background-gradient@2x.png */; };
@@ -122,6 +124,10 @@
 		08D9E6F81D899BD900810E64 /* IQ_FDWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQ_FDWaveformView.m; sourceTree = "<group>"; };
 		08D9E6FA1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IQTimeIntervalFormatter.h"; sourceTree = "<group>"; };
 		08D9E6FB1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IQTimeIntervalFormatter.m"; sourceTree = "<group>"; };
+		08E7EF3C1DA8F1C100F03E70 /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
+		08E7EF3D1DA8F1C100F03E70 /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
+		08E7EF3E1DA8F1C100F03E70 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarView.h; sourceTree = "<group>"; };
+		08E7EF3F1DA8F1C100F03E70 /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarView.m; sourceTree = "<group>"; };
 		BD01F81E1D1071100078E0C3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BD01F8221D10717B0078E0C3 /* background-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient.png"; sourceTree = "<group>"; };
 		BD01F8231D10717B0078E0C3 /* background-gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient@2x.png"; sourceTree = "<group>"; };
@@ -275,6 +281,17 @@
 			path = FDWaveformView;
 			sourceTree = "<group>";
 		};
+		08E7EF3B1DA8F1C100F03E70 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				08E7EF3C1DA8F1C100F03E70 /* MBCircularProgressBarLayer.h */,
+				08E7EF3D1DA8F1C100F03E70 /* MBCircularProgressBarLayer.m */,
+				08E7EF3E1DA8F1C100F03E70 /* MBCircularProgressBarView.h */,
+				08E7EF3F1DA8F1C100F03E70 /* MBCircularProgressBarView.m */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
 		BD01F8201D10717B0078E0C3 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +425,7 @@
 		D48FFB541D0084A0008D4E74 /* RingToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				08E7EF3B1DA8F1C100F03E70 /* Progress */,
 				BD64DEAE1DA2B4CB0071F188 /* GoogleAdsView */,
 				08C13A951D9FE86F002FF09E /* Resources */,
 				0898FC1D1D8BC703002EFE59 /* MisslaneousImages */,
@@ -503,7 +521,7 @@
 				TargetAttributes = {
 					D48FFB511D0084A0008D4E74 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 9YG7G7YB2J;
+						DevelopmentTeam = K4AAES4327;
 					};
 				};
 			};
@@ -589,6 +607,8 @@
 				08D9E6F41D899B9600810E64 /* IQCropSelectionEndView.m in Sources */,
 				BDC712DE1D0F0CD100B1E29A /* SongInfo.m in Sources */,
 				D48FFB5D1D0084A0008D4E74 /* ViewController.m in Sources */,
+				08E7EF401DA8F1C200F03E70 /* MBCircularProgressBarLayer.m in Sources */,
+				08E7EF411DA8F1C200F03E70 /* MBCircularProgressBarView.m in Sources */,
 				BDC7128C1D0BF4E000B1E29A /* SettingVC.m in Sources */,
 				BD01F8391D10717B0078E0C3 /* MYIntroductionView.m in Sources */,
 				08D9E6FC1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.m in Sources */,
@@ -719,7 +739,7 @@
 				INFOPLIST_FILE = RingToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobirizer.ringtonemaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appster.marketplace;
 				PRODUCT_NAME = SmartRingtoneMaker;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RingToneManager/RingToneManager-Bridging-Header.h";
@@ -742,7 +762,7 @@
 				INFOPLIST_FILE = RingToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobirizer.ringtonemaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appster.marketplace;
 				PRODUCT_NAME = SmartRingtoneMaker;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RingToneManager/RingToneManager-Bridging-Header.h";

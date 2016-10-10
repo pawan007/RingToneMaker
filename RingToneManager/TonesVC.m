@@ -83,7 +83,10 @@
         SongInfo *song= [self.songFilesList objectAtIndex:indexPath.row];
         [self.songFilesList removeObjectAtIndex:indexPath.row];
         [tableView reloadData]; // tell table to refresh now
+        NSError *error;
         [[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:NULL];
+        if(![[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:&error])
+            NSLog(@"Error: %@", [error localizedDescription]);
        // [self SaveAllFilesArray];
         [Utility SaveAllFilesArray:self.songFilesList];
     }
@@ -143,7 +146,7 @@
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
                                                         initWithActivityItems:@[@"Ringtone", url] applicationActivities:nil];
     [self presentViewController:activityViewController animated:YES completion:nil];
-    NSLog(@"selected Display Name : %@",song.displayName);
+    //NSLog(@"selected Display Name : %@",song.displayName);
 }
 
 //-(void)GetAllFiles

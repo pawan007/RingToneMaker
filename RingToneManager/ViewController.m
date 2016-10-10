@@ -21,14 +21,13 @@
 #import "IQCropSelectionBeginView.h"
 #import "IQCropSelectionEndView.h"
 #import "Utility.h"
-
+#import "RecorderVC.h"
 #import "GADMasterViewController.h"
 
 #define DOCUMENTS_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 
 @interface ViewController ()<MPMediaPickerControllerDelegate, IQ_FDWaveformViewDelegate>
 {
-    BJRangeSliderWithProgress *mySlider;
     NSURL *musichFilePath;
     BOOL _isPlaying;
     UIView *middleContainerView;
@@ -69,15 +68,6 @@ double distance = 0.2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureAudioSession];
- 
-//    if([[NSUserDefaults standardUserDefaults]objectForKey:kKey]!=nil)
-//    {
-//        NSData *storedData = [[NSUserDefaults standardUserDefaults] objectForKey:kKey];
-//        self.FilesList = [[NSArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:storedData]]mutableCopy];
-//    }
-//    else
-//        self.FilesList=[[NSMutableArray alloc]init];
-    
     self.FilesList=[Utility GetAllFiles];
     CGRect frame = CGRectMake(0, 50, self.view.frame.size.width, 200);
     frame = CGRectInset(frame, 0, 0);
@@ -86,7 +76,6 @@ double distance = 0.2;
     
     middleContainerView = [[UIView alloc] initWithFrame:frame];
     middleContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
-    
     _adView.backgroundColor = [UIColor clearColor];
     adViewSharedInstance    = [GADMasterViewController singleton];
     [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
@@ -102,17 +91,55 @@ double distance = 0.2;
     self.FilesList=[Utility GetAllFiles];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)searchMedia:(id)sender
 {
-    MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
-    [picker setDelegate:self];
-    [picker setAllowsPickingMultipleItems: NO];
-    [self presentViewController:picker animated:YES completion:NULL];
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Choose your option"
+                                          message:@""
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *mediaAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"Music Library", @"OK action")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   MPMediaPickerController *picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeAnyAudio];
+                                   [picker setDelegate:self];
+                                   [picker setAllowsPickingMultipleItems: NO];
+                                   [self presentViewController:picker animated:YES completion:NULL];
+                               }];
+    
+    [alertController addAction:mediaAction];
+    
+    UIAlertAction *Recording = [UIAlertAction
+                                  actionWithTitle:NSLocalizedString(@"Make Tone in your own voice", @"ownVoiceAction")
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction *action)
+                                  {
+                                      UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                      RecorderVC *vc = [sb instantiateViewControllerWithIdentifier:@"RecorderVC"];
+                                      vc.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+                                      [self presentViewController:vc animated:YES completion:nil];
+                                  }];
+    
+    [alertController addAction:Recording];
+
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                         }];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+   
 
 }
 
@@ -318,7 +345,8 @@ double distance = 0.2;
 }
 
 
--(void) designWaveView{
+-(void) designWaveView
+{
     
    // NSURL *audioURL = [[NSBundle mainBundle] URLForResource:@"la" withExtension:@"mp3"];
     {
@@ -511,7 +539,6 @@ double distance = 0.2;
     self.btnMusic.hidden=false;
     self.btnBigTone.hidden=true;
     self.lblSelectMusic.hidden=true;
-    
     //waveformView.cropEndSamples = waveformView.totalSamples*(rightCropView.cropTime/_audioPlayer.duration);
 }
 

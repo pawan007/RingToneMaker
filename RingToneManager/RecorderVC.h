@@ -22,8 +22,12 @@ typedef enum
 }ePlayerStatusType;
 
 @interface RecorderVC : UIViewController <AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+{
+    bool isStart;
+    
+}
 
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIImageView *textImageView;
 @property (weak, nonatomic) IBOutlet UIView *maskView;
 
