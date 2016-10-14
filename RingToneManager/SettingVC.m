@@ -40,15 +40,16 @@
     
     MYIntroductionPanel *panel5 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"tutorial_background_04"] title:@"Your Ticket!5" description:@"MYIntroductionView is your ticket to a great tutorial or introduction!"];
     
-    introductionView = [[MYIntroductionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) headerImage:[UIImage imageNamed:@"SampleHeaderImage.png"] panels:@[panel, panel2, panel3, panel4, panel5]];
+    introductionView = [[MYIntroductionView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height) panels:@[panel, panel2, panel3, panel4, panel5]];
     
     [introductionView.BackgroundImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [introductionView.HeaderImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [introductionView.HeaderLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [introductionView.HeaderView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [introductionView.PageControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [introductionView.SkipButton setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
+    //[introductionView.SkipButton setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
      introductionView.delegate = self;
+    introductionView.SkipButton.hidden=true;
     [introductionView showInView:_tutView animateDuration:0.2];
     
 }
@@ -60,14 +61,5 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

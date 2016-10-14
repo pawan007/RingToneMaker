@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     _currentPlaySongIndx = -1;
    }
 
@@ -35,7 +34,6 @@
 }
 -(void) viewWillAppear:(BOOL)animated
 {
-   // [self GetAllFiles];
     self.songFilesList=[Utility GetAllFiles];
     [_tableView reloadData];
 }
@@ -48,7 +46,9 @@
          player = nil;
         
         for( SongInfo *song in self.songFilesList)
-        {  song.isPlaying=false; }
+        {
+            song.isPlaying=false;
+        }
          [_tableView reloadData ];
     }
 }
@@ -68,9 +68,6 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    //SongCell * cell = (SongCell* )[_tableView cellForRowAtIndexPath:indexPath];
-//}
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -87,7 +84,6 @@
         [[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:NULL];
         if(![[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:&error])
             NSLog(@"Error: %@", [error localizedDescription]);
-       // [self SaveAllFilesArray];
         [Utility SaveAllFilesArray:self.songFilesList];
     }
 }
@@ -95,9 +91,6 @@
 // get play song
 - (void)didPlay:(SongInfo *)song
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_currentPlaySongIndx inSection:0];
-   // SongCell *cell = (SongCell* )[_tableView cellForRowAtIndexPath:indexPath];
-   // [cell setData:song atIndx:(int)indexPath.row];
     if(song.isPlaying==true)
     {
         song.isPlaying=false;
@@ -125,9 +118,7 @@
         player = nil;
     }
     NSURL *url = [NSURL fileURLWithPath:song.songUrl];
-   // NSData * data = [NSData dataWithContentsOfFile: url.path];
     NSError *error;
-    //player =  [[AVAudioPlayer alloc] initWithData: data error: & error];
      player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     if (error)
     {
@@ -141,7 +132,6 @@
 
 - (void)didSelectInfo:(SongInfo *)song
 {
-   // NSData *pdfData = [NSData dataWithContentsOfFile:song.songUrl];
     NSURL *url = [NSURL fileURLWithPath:song.songUrl];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
                                                         initWithActivityItems:@[@"Ringtone", url] applicationActivities:nil];
@@ -149,18 +139,8 @@
     //NSLog(@"selected Display Name : %@",song.displayName);
 }
 
-//-(void)GetAllFiles
-//{
-//    NSData *storedData = [[NSUserDefaults standardUserDefaults] objectForKey:kKey];
-//    self.songFilesList = [[NSArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:storedData]]mutableCopy];
-//    self.lblNoFileStatus.hidden=true;
-//}
-
 -(void)SaveAllFilesArray
 {
-//    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arrSongList];
-//    [[NSUserDefaults standardUserDefaults]setObject:data forKey:kKey];
-//    [[NSUserDefaults standardUserDefaults]synchronize];
     [Utility SaveAllFilesArray:self.songFilesList];
 }
 

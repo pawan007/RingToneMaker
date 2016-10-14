@@ -36,7 +36,7 @@
         self.Title = title;
         
         //Set panel Description
-        self.Description = [[NSString alloc] initWithString:description];
+       // self.Description = [[NSString alloc] initWithString:description];
     }
     return self;
 }
@@ -49,7 +49,7 @@
         self.Title = @"";
         
         //Set panel Description
-        self.Description = [[NSString alloc] initWithString:description];
+       // self.Description = [[NSString alloc] initWithString:description];
     }
     return self;
 }
@@ -65,7 +65,7 @@
 
 -(void)setupPanelContentViewWithImage:(UIImage*)image {
     self.PanelContentView = [[UIImageView alloc] initWithImage:image];
-    self.PanelContentView.contentMode = UIViewContentModeScaleAspectFit;
+    self.PanelContentView.contentMode = UIViewContentModeScaleAspectFill;
     self.PanelContentView.backgroundColor = [UIColor clearColor];
     self.PanelContentView.layer.cornerRadius = 3;
     self.PanelContentView.clipsToBounds = YES;

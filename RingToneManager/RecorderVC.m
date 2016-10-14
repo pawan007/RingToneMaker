@@ -29,7 +29,7 @@ int MAX_VALUE=20;
 @property (strong) NSURL *recordedAudioUrl;
 @property (strong) NSURL *flippedAudioUrl;
 @property (assign) ePlayerStatusType currentState;
-@property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
+@property (strong, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnDone;
 @property (strong) NSMutableArray *savedFilesArray;
 @end
@@ -161,10 +161,6 @@ int MAX_VALUE=20;
             [sender setImage:[UIImage imageNamed:@"bt_Play.png"] forState:UIControlStateNormal];
             self.textImageView.image = [UIImage imageNamed:@"txt_ReadMe.png"];
             [self stopPulseEffectOnButton];
-            //Delete the flipped song
-            // NSError *error;
-            //if(![[NSFileManager defaultManager] removeItemAtURL:self.flippedAudioUrl error:&error])
-               // NSLog(@"Error: %@", [error localizedDescription]);
         }
         break;
             
@@ -218,6 +214,48 @@ int MAX_VALUE=20;
 -(void)prepareToRecord
 {
     
+    
+    
+    
+    
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted)
+     {
+         if (granted) {
+             NSLog(@"Permission granted");
+         }
+         else {
+             NSLog(@"Permission denied");
+             UIAlertController *alertControllerp = [UIAlertController
+                                                    alertControllerWithTitle:@"Please allow Microphone access from settings"
+                                                    message:@""
+                                                    preferredStyle:UIAlertControllerStyleAlert];
+             
+             UIAlertAction *settingsAction = [UIAlertAction
+                                              actionWithTitle:NSLocalizedString(@"Settings", @"Settings")
+                                              style:UIAlertActionStyleDefault
+                                              
+                                              handler:^(UIAlertAction *action)
+                                              {
+                                                  [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
+
+                                              }
+                                              ];
+             
+             [alertControllerp addAction:settingsAction];
+             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                    style:UIAlertActionStyleCancel
+                                                                  handler:^(UIAlertAction *action) {
+                                                                  }];
+             [alertControllerp addAction:cancelAction];
+             [self presentViewController:alertControllerp animated:YES completion:nil];
+             
+             return;
+         }
+     }];
+
+    
+    
+    
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"Name Your Recording"
                                           message:@""
@@ -231,6 +269,7 @@ int MAX_VALUE=20;
     UIAlertAction *okAction = [UIAlertAction
                                actionWithTitle:NSLocalizedString(@"OK", @"OK action")
                                style:UIAlertActionStyleDefault
+                               
                                handler:^(UIAlertAction *action)
                                {
                                    UITextField *txtRingtone = alertController.textFields.firstObject;
@@ -239,13 +278,16 @@ int MAX_VALUE=20;
                                        [self presentViewController:alertController animated:YES completion:nil];
                                        return ;
                                    }
+                                   
+                                   
+                                   
                                    self.currentState = eRecordingState;
                                    [self startPulseEffectOnButton];
 
                                    if (!isStart)
                                    {
                                        [self performSelector:@selector(stopAndSaveRecording) withObject:self afterDelay:MAX_VALUE];
-                                       self.progressBar.unitString =@" Sec";
+                                      // self.progressBar.unitString =@" Sec";
                                        [self.progressBar setMaxValue:MAX_VALUE];
                                        //        [self.btnStartStop setTitle:@"Stop" forState:UIControlStateNormal];
                                        self.progressBar.countdown = true;
@@ -258,7 +300,7 @@ int MAX_VALUE=20;
                                    
                                    NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
                                                              [NSNumber numberWithInt:kAudioFormatMPEG4AAC], AVFormatIDKey,
-                                                             [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
+                                                             [NSNumber numberWithInt:AVAudioQualityMedium], AVEncoderAudioQualityKey,
                                                              [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
                                                              [NSNumber numberWithFloat:8000.0], AVSampleRateKey,
                                                              nil];
@@ -271,6 +313,7 @@ int MAX_VALUE=20;
                                    dateString = [formatter stringFromDate:[NSDate date]];
                                    recordPath= [recordPath stringByAppendingString:dateString];
                                    recordPath=[ recordPath stringByAppendingPathExtension:@"m4r"];
+                                  
                                    self.recordedAudioUrl = [[NSURL alloc ] initFileURLWithPath:recordPath];
                                    NSString *flippedPath= [DOCUMENTS_FOLDER stringByAppendingPathComponent:@"result"];
                                    //flippedPath= [flippedPath stringByAppendingPathExtension:@".m4a"];
@@ -288,10 +331,6 @@ int MAX_VALUE=20;
                                    {
                                        NSLog(@"Error: Prepare to record failed");
                                    }
-
-                                   
-                                   
-                                   
                                    
                                    SongInfo *song = [SongInfo new];
                                    song.title = txtRingtone.text;
@@ -305,16 +344,12 @@ int MAX_VALUE=20;
                                        NSLog(@"Error: Record failed");
                                    }
 
-                                
-                                 
-                                   
                                }];
     
     [alertController addAction:okAction];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                            style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction *action) {
-                                                           //  [self dismissViewControllerAnimated:YES completion:nil];
                                                          }];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -327,6 +362,11 @@ int MAX_VALUE=20;
 {
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordedAudioUrl error:nil];
     player.delegate = self;
+
+       // [self.progressBar setMaxValue:0];
+       //  self.progressBar.countdown = true;
+      //  [self.progressBar setValue:MAX_VALUE animateWithDuration:MAX_VALUE];
+
     if(![self.player play])
     {
         NSLog(@"Error: Play failed");

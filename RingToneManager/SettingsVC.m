@@ -8,6 +8,7 @@
 
 #import "SettingsVC.h"
 #import "SettingVC.h"
+#import "iRate/iRate.h"
 
 @interface SettingsVC ()
 
@@ -27,63 +28,66 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0)
     {
         if(indexPath.row==0)
         {
-//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"Are you sure delete all ringtones?" preferredStyle:UIAlertControllerStyleAlert];
-//            
-//            [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-//            
-//            [alertController addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-//                
-////                if (![[NSFileManager defaultManager] removeItemAtURL:self.recordedAudioUrl error:&error])
-////                    NSLog(@"Error: %@", [error localizedDescription]);
-//
-//            }]];
-//            
-//            [self presentViewController:alertController animated:YES completion:nil];
-            
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             SettingVC *vc = [sb instantiateViewControllerWithIdentifier:@"SettingVC"];
             vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [self.navigationController pushViewController:vc animated:true];
-
         }
-    }
-    else if(indexPath.section == 1)
-    {
+        
         if(indexPath.row==1)
         {
-            NSURL *url=[NSURL new];
-            UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
-                                                                initWithActivityItems:@[@"Ringtone", url] applicationActivities:nil];
-            [self presentViewController:activityViewController animated:YES completion:nil];
-
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            SettingVC *vc = [sb instantiateViewControllerWithIdentifier:@"AboutCompany"];
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self.navigationController pushViewController:vc animated:true];
         }
     }
-    
-    
     else if(indexPath.section == 1)
     {
-        if(indexPath.row==3)
+        if(indexPath.row==0)
         {
-            NSURL *url=[NSURL new];
-            UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
-                                                                initWithActivityItems:@[@"Ringtone", url] applicationActivities:nil];
-            [self presentViewController:activityViewController animated:YES completion:nil];
+            [[iRate sharedInstance] openRatingsPageInAppStore];
+        }
+        
+        if(indexPath.row==1)
+        {
+            if ([MFMailComposeViewController canSendMail])
+            {
+                MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+                mail.mailComposeDelegate = self;
+                [mail setSubject:@"RingTone FeedBack to Admin"];
+                [mail setToRecipients:@[@"admin@mobirizer.com"]];
+                [self presentViewController:mail animated:YES completion:NULL];
+            }
+            else
+            {
+                NSLog(@"This device cannot send email");
+            }
             
         }
     }
     
-   }
+    if(indexPath.row==2)
+    {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
+                                                @"itms-apps://yourAppLinkHere"]];
+    }
+    // Then implement the delegate method
+  
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(nullable NSError *)error
+
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 
 @end

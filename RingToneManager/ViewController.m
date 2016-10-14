@@ -119,13 +119,13 @@ double distance = 0.2;
     [alertController addAction:mediaAction];
     
     UIAlertAction *Recording = [UIAlertAction
-                                  actionWithTitle:NSLocalizedString(@"Make Tone in your own voice", @"ownVoiceAction")
+                                  actionWithTitle:NSLocalizedString(@"Record Tone in your own voice", @"ownVoiceAction")
                                   style:UIAlertActionStyleDefault
                                   handler:^(UIAlertAction *action)
                                   {
                                       UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                       RecorderVC *vc = [sb instantiateViewControllerWithIdentifier:@"RecorderVC"];
-                                      vc.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+                                      //vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                                       [self presentViewController:vc animated:YES completion:nil];
                                   }];
     
@@ -137,11 +137,7 @@ double distance = 0.2;
                                                          }];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
-    
-    
-   
-
-}
+   }
 
 
 - (IBAction)makeRingTone:(id)sender

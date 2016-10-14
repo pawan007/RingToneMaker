@@ -30,6 +30,7 @@
 		08C13AA81D9FE86F002FF09E /* Gotham-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08C13A9E1D9FE86F002FF09E /* Gotham-LightItalic.otf */; };
 		08C13AA91D9FE86F002FF09E /* Gotham-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08C13A9F1D9FE86F002FF09E /* Gotham-Medium.otf */; };
 		08C13AAA1D9FE86F002FF09E /* Gotham-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08C13AA01D9FE86F002FF09E /* Gotham-MediumItalic.otf */; };
+		08C3CF161DAE40610078DBDD /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C3CF151DAE40610078DBDD /* iRate.m */; };
 		08D9E6EC1D899B1C00810E64 /* IQAudioCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D9E6EB1D899B1C00810E64 /* IQAudioCropperViewController.m */; };
 		08D9E6F31D899B9600810E64 /* IQCropSelectionBeginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D9E6EE1D899B9600810E64 /* IQCropSelectionBeginView.m */; };
 		08D9E6F41D899B9600810E64 /* IQCropSelectionEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D9E6F01D899B9600810E64 /* IQCropSelectionEndView.m */; };
@@ -112,6 +113,8 @@
 		08C13A9E1D9FE86F002FF09E /* Gotham-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-LightItalic.otf"; sourceTree = "<group>"; };
 		08C13A9F1D9FE86F002FF09E /* Gotham-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Medium.otf"; sourceTree = "<group>"; };
 		08C13AA01D9FE86F002FF09E /* Gotham-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-MediumItalic.otf"; sourceTree = "<group>"; };
+		08C3CF141DAE40610078DBDD /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		08C3CF151DAE40610078DBDD /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		08D9E6EA1D899B1C00810E64 /* IQAudioCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQAudioCropperViewController.h; sourceTree = "<group>"; };
 		08D9E6EB1D899B1C00810E64 /* IQAudioCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQAudioCropperViewController.m; sourceTree = "<group>"; };
 		08D9E6ED1D899B9600810E64 /* IQCropSelectionBeginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQCropSelectionBeginView.h; sourceTree = "<group>"; };
@@ -252,6 +255,15 @@
 				08C13AA01D9FE86F002FF09E /* Gotham-MediumItalic.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		08C3CF131DAE40610078DBDD /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				08C3CF141DAE40610078DBDD /* iRate.h */,
+				08C3CF151DAE40610078DBDD /* iRate.m */,
+			);
+			path = iRate;
 			sourceTree = "<group>";
 		};
 		08D9E6E91D899B1C00810E64 /* AudioCropper */ = {
@@ -425,6 +437,7 @@
 		D48FFB541D0084A0008D4E74 /* RingToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				08C3CF131DAE40610078DBDD /* iRate */,
 				08E7EF3B1DA8F1C100F03E70 /* Progress */,
 				BD64DEAE1DA2B4CB0071F188 /* GoogleAdsView */,
 				08C13A951D9FE86F002FF09E /* Resources */,
@@ -521,7 +534,7 @@
 				TargetAttributes = {
 					D48FFB511D0084A0008D4E74 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = K4AAES4327;
+						DevelopmentTeam = 9YG7G7YB2J;
 					};
 				};
 			};
@@ -610,6 +623,7 @@
 				08E7EF401DA8F1C200F03E70 /* MBCircularProgressBarLayer.m in Sources */,
 				08E7EF411DA8F1C200F03E70 /* MBCircularProgressBarView.m in Sources */,
 				BDC7128C1D0BF4E000B1E29A /* SettingVC.m in Sources */,
+				08C3CF161DAE40610078DBDD /* iRate.m in Sources */,
 				BD01F8391D10717B0078E0C3 /* MYIntroductionView.m in Sources */,
 				08D9E6FC1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.m in Sources */,
 				D48FFB5A1D0084A0008D4E74 /* AppDelegate.m in Sources */,
@@ -662,6 +676,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: priyanka singh (54K7HLD85Q)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -705,6 +720,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MOBIRIZER SERVICES PRIVATE LIMITED (9YG7G7YB2J)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -729,8 +745,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: priyanka singh (54K7HLD85Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: priyanka singh (54K7HLD85Q)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RingToneManager/Wave",
@@ -739,7 +755,7 @@
 				INFOPLIST_FILE = RingToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appster.marketplace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobirizer.ringtonemaker;
 				PRODUCT_NAME = SmartRingtoneMaker;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RingToneManager/RingToneManager-Bridging-Header.h";
@@ -752,8 +768,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MOBIRIZER SERVICES PRIVATE LIMITED (9YG7G7YB2J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MOBIRIZER SERVICES PRIVATE LIMITED (9YG7G7YB2J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RingToneManager/Wave",
@@ -762,7 +778,7 @@
 				INFOPLIST_FILE = RingToneManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appster.marketplace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobirizer.ringtonemaker;
 				PRODUCT_NAME = SmartRingtoneMaker;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RingToneManager/RingToneManager-Bridging-Header.h";

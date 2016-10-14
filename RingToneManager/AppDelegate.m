@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "iRate.h"
 @interface AppDelegate ()
 
 @end
@@ -17,7 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self irateSetup];
         return YES;
+}
+
+
+
+-(void)irateSetup
+{
+    [iRate sharedInstance].applicationBundleID=@"com.mobirizer.smartzip";
+    [iRate sharedInstance].appStoreID = 1141913794;
+    [iRate sharedInstance].ratingsURL =[NSURL URLWithString:@"https://itunes.apple.com/us/app/smartzip/id1141913794?ls=1&mt=8"];
+    [iRate sharedInstance].onlyPromptIfLatestVersion = false;
+    [iRate sharedInstance].previewMode = false;
+    [iRate sharedInstance]. daysUntilPrompt = 1;
+    [iRate sharedInstance].usesUntilPrompt = 2;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
