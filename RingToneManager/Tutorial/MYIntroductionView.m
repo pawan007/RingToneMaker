@@ -26,7 +26,7 @@
 #import "MYIntroductionView.h"
 
 #define DEFAULT_BACKGROUND_COLOR [UIColor colorWithWhite:0 alpha:0.9]
-#define HEADER_VIEW_HEIGHT 45
+#define HEADER_VIEW_HEIGHT 15
 #define PAGE_CONTROL_PADDING 1
 #define TITLE_FONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0]
 #define TITLE_TEXT_COLOR [UIColor whiteColor]
@@ -467,7 +467,7 @@
     [self setContentScrollViewHeightForPanelIndex:self.CurrentPanelIndex animated:YES];
     [self makePanelVisibleAtIndex:(NSInteger)self.CurrentPanelIndex];
     
-    [self.ContentScrollView setContentOffset:CGPointMake(self.CurrentPanelIndex * 320, 0) animated:YES];
+    [self.ContentScrollView setContentOffset:CGPointMake(self.CurrentPanelIndex * 380, 0) animated:YES];
     //Call Back, if applicable
     if (LastPanelIndex != self.CurrentPanelIndex) { //Keeps from making the callback when just bouncing and not actually changing pages
         if ([(id)delegate respondsToSelector:@selector(introductionDidChangeToPanel:withIndex:)]) {

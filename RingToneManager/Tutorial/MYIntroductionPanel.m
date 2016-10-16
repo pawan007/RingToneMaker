@@ -33,7 +33,7 @@
         //Set panel Image
         [self setupPanelContentViewWithImage:image];
         
-        self.Title = title;
+       // self.Title = title;
         
         //Set panel Description
        // self.Description = [[NSString alloc] initWithString:description];
@@ -65,7 +65,7 @@
 
 -(void)setupPanelContentViewWithImage:(UIImage*)image {
     self.PanelContentView = [[UIImageView alloc] initWithImage:image];
-    self.PanelContentView.contentMode = UIViewContentModeScaleAspectFill;
+    self.PanelContentView.contentMode = UIViewContentModeScaleAspectFit;
     self.PanelContentView.backgroundColor = [UIColor clearColor];
     self.PanelContentView.layer.cornerRadius = 3;
     self.PanelContentView.clipsToBounds = YES;

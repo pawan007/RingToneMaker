@@ -25,9 +25,9 @@
 
 -(void)irateSetup
 {
-    [iRate sharedInstance].applicationBundleID=@"com.mobirizer.smartzip";
+    [iRate sharedInstance].applicationBundleID=@"com.mobirizer.ringtonemaker";
     [iRate sharedInstance].appStoreID = 1141913794;
-    [iRate sharedInstance].ratingsURL =[NSURL URLWithString:@"https://itunes.apple.com/us/app/smartzip/id1141913794?ls=1&mt=8"];
+    [iRate sharedInstance].ratingsURL =[NSURL URLWithString:@"https://itunes.apple.com/us/app/smartringtonemaker/id1161425556?ls=1&mt=8"];
     [iRate sharedInstance].onlyPromptIfLatestVersion = false;
     [iRate sharedInstance].previewMode = false;
     [iRate sharedInstance]. daysUntilPrompt = 1;

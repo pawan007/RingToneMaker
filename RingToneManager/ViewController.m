@@ -349,6 +349,9 @@ double distance = 0.2;
         _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musichFilePath error:nil];
         //_audioPlayer.delegate = self;
         _audioPlayer.meteringEnabled = YES;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        [self performSelector:@selector(stopAndSaveRecording) withObject:self afterDelay:40];
+
     }
     
     
@@ -399,7 +402,6 @@ double distance = 0.2;
         [leftCropView addGestureRecognizer:leftCropPanRecognizer];
         [rightCropView addGestureRecognizer:rightCropPanRecognizer];
     }
-
 }
 
 
@@ -428,6 +430,9 @@ double distance = 0.2;
             _audioPlayer.currentTime = leftCropView.cropTime;
             waveformView.progressSamples = waveformView.totalSamples*(_audioPlayer.currentTime/_audioPlayer.duration);
             waveformView.cropStartSamples = waveformView.totalSamples*(leftCropView.cropTime/_audioPlayer.duration);
+            
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
+            [self performSelector:@selector(stopAndSaveRecording) withObject:self afterDelay:30  ];
         }
         
         NSString *time=[NSString timeStringForTimeInterval:leftCropView.cropTime];
@@ -509,6 +514,10 @@ double distance = 0.2;
             NSString *time=[NSString timeStringForTimeInterval:leftCropView.cropTime];
             NSString *str=[NSString stringWithFormat:@"<%@" ,time];
             self.lblStartTime.text=str;
+            
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
+            [self performSelector:@selector(stopAndSaveRecording) withObject:self afterDelay:40];
+
         }
     }
     else if (panRecognizer.state == UIGestureRecognizerStateEnded|| panRecognizer.state == UIGestureRecognizerStateFailed)
@@ -525,6 +534,16 @@ double distance = 0.2;
             //_cropButton.enabled = YES;
         }
     }
+}
+
+
+- (void)stopAndSaveRecording
+{
+  if(_audioPlayer)
+  {
+     [_audioPlayer stop];
+      [self.btnPlay setImage:[UIImage imageNamed:@"PlayIconBig"] forState:UIControlStateNormal];
+  }
 }
 
 - (void)waveformViewDidRender:(IQ_FDWaveformView *)waveformViews;

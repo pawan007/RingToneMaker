@@ -213,11 +213,7 @@ int MAX_VALUE=20;
 
 -(void)prepareToRecord
 {
-    
-    
-    
-    
-    
+ 
     [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted)
      {
          if (granted) {
@@ -372,6 +368,9 @@ int MAX_VALUE=20;
         NSLog(@"Error: Play failed");
     }
 }
+
+
+
 
 -(void)stopPlaying
 {

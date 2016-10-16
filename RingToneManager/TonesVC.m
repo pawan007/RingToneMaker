@@ -12,13 +12,19 @@
  #import <AVFoundation/AVFoundation.h>
 #import "Constant.h"
 #import "Utility.h"
+#import "GADMasterViewController.h"
 
 @interface TonesVC ()<UITableViewDelegate, UITableViewDataSource, SongCellDelegate> {
     __weak IBOutlet UITableView *_tableView;
     int _currentPlaySongIndx;
     AVAudioPlayer *player;
+    GADMasterViewController *adViewSharedInstance;
+
 }
 @property(nonatomic,strong)NSMutableArray *songFilesList;
+@property (weak, nonatomic) IBOutlet UIView *adView;
+
+
 @end
 
 @implementation TonesVC
@@ -26,6 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentPlaySongIndx = -1;
+    _adView.backgroundColor = [UIColor clearColor];
+    adViewSharedInstance    = [GADMasterViewController singleton];
+    [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
    }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +45,16 @@
 {
     self.songFilesList=[Utility GetAllFiles];
     [_tableView reloadData];
+    if(self.songFilesList.count>0)
+    {
+        self.lblNoFileStatus.hidden=true;
+        _tableView.hidden=false;
+    }
+    else
+    {
+        _tableView.hidden=true;
+
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -127,6 +146,14 @@
     player.numberOfLoops = -1;
     [player setVolume:1.0];
     [player play];
+}
+
+#pragma mark - Google BannerAd Custom delegate
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    for(UIView *tempView in _adView.subviews) {
+        [tempView removeFromSuperview];
+    }
+    [_adView addSubview:adView];
 }
 
 

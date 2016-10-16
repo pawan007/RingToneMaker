@@ -30,17 +30,28 @@
 }
 
 - (void)showTutorila {
-    MYIntroductionPanel *panel = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"tutorial_background_00"] description:@"Welcome to MYIntroductionView, your 100 percent customizable interface for introductions and tutorials! Simply add a few classes to your project, and you are ready to go!"];
+    MYIntroductionPanel *panel = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"1"] description:@"hgh"];
     
-    MYIntroductionPanel *panel2 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"tutorial_background_01"] title:@"Your Ticket!" description:@"MYIntroductionView is your ticket to a great tutorial or introduction!"];
+    MYIntroductionPanel *panel2 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"2"]  description:@"kjk"];
     
-    MYIntroductionPanel *panel3 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"tutorial_background_02"] title:@"Your Ticket!3" description:@"MYIntroductionView is your ticket to a great tutorial or introduction!"];
+    MYIntroductionPanel *panel3 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"3"] title:@"Your Ticket!3" description:@""];
     
-    MYIntroductionPanel *panel4 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"tutorial_background_03"] title:@"Your Ticket!4" description:@"MYIntroductionView is your ticket to a great tutorial or introduction!"];
+    MYIntroductionPanel *panel4 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"4"] title:@"Your Ticket!4" description:@""];
     
-    MYIntroductionPanel *panel5 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"tutorial_background_04"] title:@"Your Ticket!5" description:@"MYIntroductionView is your ticket to a great tutorial or introduction!"];
+    MYIntroductionPanel *panel5 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"5"] title:@"" description:@""];
     
-    introductionView = [[MYIntroductionView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height) panels:@[panel, panel2, panel3, panel4, panel5]];
+    MYIntroductionPanel *panel6 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"6"] title:@"" description:@""];
+    MYIntroductionPanel *panel7 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"7"] title:@"" description:@""];
+    
+    MYIntroductionPanel *panel8 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"8"] title:@"" description:@""];
+    
+    MYIntroductionPanel *panel9 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"9"] title:@"" description:@""];
+    
+    MYIntroductionPanel *panel10 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"10"] title:@"" description:@""];
+    
+    MYIntroductionPanel *panel11 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"11"] title:@"" description:@""];
+    
+    introductionView = [[MYIntroductionView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height) panels:@[panel, panel2, panel3, panel4, panel5,panel6,panel7,panel8,panel9,panel10,panel11]];
     
     [introductionView.BackgroundImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [introductionView.HeaderImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];

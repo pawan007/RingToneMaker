@@ -55,7 +55,7 @@
             [[iRate sharedInstance] openRatingsPageInAppStore];
         }
         
-        if(indexPath.row==1)
+        if(indexPath.row==2)
         {
             if ([MFMailComposeViewController canSendMail])
             {
@@ -63,6 +63,24 @@
                 mail.mailComposeDelegate = self;
                 [mail setSubject:@"RingTone FeedBack to Admin"];
                 [mail setToRecipients:@[@"admin@mobirizer.com"]];
+                [self presentViewController:mail animated:YES completion:NULL];
+            }
+            else
+            {
+                NSLog(@"This device cannot send email");
+            }
+            
+        }
+        
+        if(indexPath.row==1)
+        {
+            if ([MFMailComposeViewController canSendMail])
+            {
+                MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+                mail.mailComposeDelegate = self;
+                [mail setSubject:@"Amazing Ringtone Maker App check this out on AppStore."];
+                //[mail setToRecipients:@[@"admin@mobirizer.com"]];
+                [mail setMessageBody:@"https://itunes.apple.com/us/app/smartringtonemaker/id1161425556?ls=1&mt=8" isHTML:true];
                 [self presentViewController:mail animated:YES completion:NULL];
             }
             else
