@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vp-Ta-jHo">
-                        <rect key="frame" x="62" y="23" width="185" height="15"/>
+                        <rect key="frame" x="72" y="23" width="185" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="185" id="fUh-xS-BsJ"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De1-Yz-GX7">
-                        <rect key="frame" x="0.0" y="5" width="54" height="53"/>
+                        <rect key="frame" x="10" y="5" width="54" height="53"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="54" id="XfP-dR-Tgs"/>
                         </constraints>
@@ -64,7 +64,7 @@
                 </subviews>
                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="De1-Yz-GX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3ne-Sf-6Te"/>
+                    <constraint firstItem="De1-Yz-GX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="3ne-Sf-6Te"/>
                     <constraint firstAttribute="trailing" secondItem="njR-xm-bBO" secondAttribute="trailing" id="4GK-yg-WOg"/>
                     <constraint firstAttribute="bottom" secondItem="De1-Yz-GX7" secondAttribute="bottom" constant="3" id="5DZ-UX-FkH"/>
                     <constraint firstItem="njR-xm-bBO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-1.5" id="7Uq-Zi-eHC"/>

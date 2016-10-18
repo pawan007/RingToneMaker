@@ -93,8 +93,7 @@
     
     if(indexPath.row==2)
     {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
-                                                @"itms-apps://yourAppLinkHere"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/developer/mobirizer/id1141913793"]];
     }
     // Then implement the delegate method
   

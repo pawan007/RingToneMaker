@@ -47,13 +47,13 @@
     [_tableView reloadData];
     if(self.songFilesList.count>0)
     {
-        self.lblNoFileStatus.hidden=true;
+        self.btnNoFileStatus.hidden=true;
         _tableView.hidden=false;
     }
     else
     {
+        self.btnNoFileStatus.hidden=false;
         _tableView.hidden=true;
-
     }
 }
 -(void)viewWillDisappear:(BOOL)animated
@@ -96,14 +96,17 @@
     {
         //remove the deleted object from your data source.
         //If your data source is an NSMutableArray, do this
+        if(player)
+            [player stop];
         SongInfo *song= [self.songFilesList objectAtIndex:indexPath.row];
         [self.songFilesList removeObjectAtIndex:indexPath.row];
         [tableView reloadData]; // tell table to refresh now
         NSError *error;
-        [[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:NULL];
+       //[[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:NULL];
         if(![[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:&error])
             NSLog(@"Error: %@", [error localizedDescription]);
         [Utility SaveAllFilesArray:self.songFilesList];
+        
     }
 }
 
@@ -169,6 +172,10 @@
 -(void)SaveAllFilesArray
 {
     [Utility SaveAllFilesArray:self.songFilesList];
+}
+- (IBAction)btnNoFilesClick:(id)sender {
+    [self.tabBarController setSelectedIndex:0];
+
 }
 
 

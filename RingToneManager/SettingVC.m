@@ -7,12 +7,14 @@
 //
 
 #import "SettingVC.h"
-#import "MYIntroductionView.h"
 
-@interface SettingVC ()<MYIntroductionDelegate> {
-    MYIntroductionView *introductionView;
+@interface SettingVC () {
+    NSMutableArray *arrayImages;
 }
 @property (weak, nonatomic) IBOutlet UIView *tutView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
 
 @end
 
@@ -21,7 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self showTutorila];
+    arrayImages=[[NSMutableArray alloc]initWithObjects:@"1", @"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",nil];
+   // [self showTutorila];
+    [self.scrollView layoutIfNeeded];
+    [self.scrollView layoutSubviews];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,48 +34,44 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showTutorila {
-    MYIntroductionPanel *panel = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"1"] description:@"hgh"];
+-(void )viewDidLayoutSubviews
+{
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self showTutorila];
+}
+- (void)showTutorila
+{
     
-    MYIntroductionPanel *panel2 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"2"]  description:@"kjk"];
+    for(UIImageView *img in self.scrollView.subviews)
+    {
+        [img removeFromSuperview];
+    }
+    for(int i=0;i<arrayImages.count;i++)
+    {
+
+        UIImageView *imgview=[[UIImageView alloc]initWithFrame:CGRectMake(self.scrollView.frame.size.width*i, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
+        imgview.image=[UIImage imageNamed:arrayImages[i]];
+        imgview.contentMode = UIViewContentModeScaleAspectFit;
+        [self.scrollView addSubview:imgview];
+        
+        self.pageControl.numberOfPages=arrayImages.count;
+         //scrollView.contentSize = CGSize(width: scrollView.frame.size.width * CGFloat(productImageArray.count), height: scrollView.frame.size.height)
+    }
     
-    MYIntroductionPanel *panel3 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"3"] title:@"Your Ticket!3" description:@""];
-    
-    MYIntroductionPanel *panel4 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"4"] title:@"Your Ticket!4" description:@""];
-    
-    MYIntroductionPanel *panel5 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"5"] title:@"" description:@""];
-    
-    MYIntroductionPanel *panel6 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"6"] title:@"" description:@""];
-    MYIntroductionPanel *panel7 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"7"] title:@"" description:@""];
-    
-    MYIntroductionPanel *panel8 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"8"] title:@"" description:@""];
-    
-    MYIntroductionPanel *panel9 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"9"] title:@"" description:@""];
-    
-    MYIntroductionPanel *panel10 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"10"] title:@"" description:@""];
-    
-    MYIntroductionPanel *panel11 = [[MYIntroductionPanel alloc] initWithimage:[UIImage imageNamed:@"11"] title:@"" description:@""];
-    
-    introductionView = [[MYIntroductionView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height) panels:@[panel, panel2, panel3, panel4, panel5,panel6,panel7,panel8,panel9,panel10,panel11]];
-    
-    [introductionView.BackgroundImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-    [introductionView.HeaderImageView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [introductionView.HeaderLabel setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [introductionView.HeaderView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    [introductionView.PageControl setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-    //[introductionView.SkipButton setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
-     introductionView.delegate = self;
-    introductionView.SkipButton.hidden=true;
-    [introductionView showInView:_tutView animateDuration:0.2];
-    
+    self.scrollView.contentSize=CGSizeMake(self.scrollView.frame.size.width * arrayImages.count,self.scrollView.frame.size.height);
+    ;
+
+
 }
 
--(void)introductionDidFinishWithType:(MYFinishType)finishType {
-    
+-(void)scrollViewDidEndDecelerating:(UIScrollView*)scrollView
+{
+    int pageNo=(self.scrollView.contentOffset.x/self.scrollView.frame.size.width);
+    self.pageControl.currentPage=pageNo;
 }
--(void)introductionDidChangeToPanel:(MYIntroductionPanel *)panel withIndex:(NSInteger)panelIndex {
-    
-}
+
 
 
 @end

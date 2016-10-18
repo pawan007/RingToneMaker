@@ -11,15 +11,9 @@
 		080522F61D8ED78200A6142C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 080522F51D8ED78200A6142C /* Utility.m */; };
 		086C00511D9237590002B069 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086C00501D9237590002B069 /* Launch Screen.storyboard */; };
 		0898FC1C1D8AFAD2002EFE59 /* RecorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0898FC1B1D8AFAD2002EFE59 /* RecorderVC.m */; };
-		0898FC271D8BC703002EFE59 /* bg_HomeView.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC1E1D8BC703002EFE59 /* bg_HomeView.png */; };
 		0898FC281D8BC703002EFE59 /* bt_Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC1F1D8BC703002EFE59 /* bt_Play.png */; };
 		0898FC291D8BC703002EFE59 /* bt_Record.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC201D8BC703002EFE59 /* bt_Record.png */; };
 		0898FC2A1D8BC703002EFE59 /* bt_Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC211D8BC703002EFE59 /* bt_Stop.png */; };
-		0898FC2B1D8BC703002EFE59 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC221D8BC703002EFE59 /* Default-568h@2x.png */; };
-		0898FC2C1D8BC703002EFE59 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC231D8BC703002EFE59 /* Default.png */; };
-		0898FC2D1D8BC703002EFE59 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC241D8BC703002EFE59 /* Default@2x.png */; };
-		0898FC2E1D8BC703002EFE59 /* txt_Playback.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC251D8BC703002EFE59 /* txt_Playback.png */; };
-		0898FC2F1D8BC703002EFE59 /* txt_ReadMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 0898FC261D8BC703002EFE59 /* txt_ReadMe.png */; };
 		08C13AA11D9FE86F002FF09E /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08C13A971D9FE86F002FF09E /* Gotham-Black.otf */; };
 		08C13AA21D9FE86F002FF09E /* Gotham-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08C13A981D9FE86F002FF09E /* Gotham-BlackItalic.otf */; };
 		08C13AA31D9FE86F002FF09E /* Gotham-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08C13A991D9FE86F002FF09E /* Gotham-Bold.otf */; };
@@ -40,18 +34,6 @@
 		08E7EF401DA8F1C200F03E70 /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E7EF3D1DA8F1C100F03E70 /* MBCircularProgressBarLayer.m */; };
 		08E7EF411DA8F1C200F03E70 /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08E7EF3F1DA8F1C100F03E70 /* MBCircularProgressBarView.m */; };
 		BD01F81F1D1071110078E0C3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD01F81E1D1071100078E0C3 /* QuartzCore.framework */; };
-		BD01F82F1D10717B0078E0C3 /* background-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8221D10717B0078E0C3 /* background-gradient.png */; };
-		BD01F8301D10717B0078E0C3 /* background-gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8231D10717B0078E0C3 /* background-gradient@2x.png */; };
-		BD01F8311D10717B0078E0C3 /* button-background.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8241D10717B0078E0C3 /* button-background.png */; };
-		BD01F8321D10717B0078E0C3 /* button-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8251D10717B0078E0C3 /* button-background@2x.png */; };
-		BD01F8331D10717B0078E0C3 /* tutorial_background_00@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8261D10717B0078E0C3 /* tutorial_background_00@2x.jpg */; };
-		BD01F8341D10717B0078E0C3 /* tutorial_background_01@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8271D10717B0078E0C3 /* tutorial_background_01@2x.jpg */; };
-		BD01F8351D10717B0078E0C3 /* tutorial_background_02@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8281D10717B0078E0C3 /* tutorial_background_02@2x.jpg */; };
-		BD01F8361D10717B0078E0C3 /* tutorial_background_03@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD01F8291D10717B0078E0C3 /* tutorial_background_03@2x.jpg */; };
-		BD01F8371D10717B0078E0C3 /* tutorial_background_04@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD01F82A1D10717B0078E0C3 /* tutorial_background_04@2x.jpg */; };
-		BD01F8381D10717B0078E0C3 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F82C1D10717B0078E0C3 /* MYIntroductionPanel.m */; };
-		BD01F8391D10717B0078E0C3 /* MYIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F82E1D10717B0078E0C3 /* MYIntroductionView.m */; };
-		BD01F83B1D10786E0078E0C3 /* SampleHeaderImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BD01F83A1D10786E0078E0C3 /* SampleHeaderImage.png */; };
 		BD01F8411D11A5B20078E0C3 /* PCSEQVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F83E1D11A5B20078E0C3 /* PCSEQVisualizer.m */; };
 		BD01F8421D11A5B20078E0C3 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F8401D11A5B20078E0C3 /* UIImage+Color.m */; };
 		BD01F8451D11A7420078E0C3 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F8441D11A7420078E0C3 /* Common.m */; };
@@ -64,13 +46,6 @@
 		BD64DEBF1DA2C1D00071F188 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD64DEBC1DA2C1D00071F188 /* README.txt */; };
 		BDC712891D0BF4C100B1E29A /* TonesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC712881D0BF4C100B1E29A /* TonesVC.m */; };
 		BDC7128C1D0BF4E000B1E29A /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC7128B1D0BF4E000B1E29A /* SettingVC.m */; };
-		BDC712971D0C518600B1E29A /* Thorne1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC7128F1D0C518600B1E29A /* Thorne1.m4a */; };
-		BDC712981D0C518600B1E29A /* Thorne2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC712901D0C518600B1E29A /* Thorne2.m4a */; };
-		BDC712991D0C518600B1E29A /* Thorne3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC712911D0C518600B1E29A /* Thorne3.m4a */; };
-		BDC7129A1D0C518600B1E29A /* Thorne4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC712921D0C518600B1E29A /* Thorne4.m4a */; };
-		BDC7129B1D0C518600B1E29A /* Thorne5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC712931D0C518600B1E29A /* Thorne5.m4a */; };
-		BDC7129C1D0C518600B1E29A /* Thorne6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC712941D0C518600B1E29A /* Thorne6.m4a */; };
-		BDC7129D1D0C518600B1E29A /* Thorne7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BDC712951D0C518600B1E29A /* Thorne7.m4a */; };
 		BDC712D91D0EFF4F00B1E29A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC712D81D0EFF4F00B1E29A /* AVFoundation.framework */; };
 		BDC712DE1D0F0CD100B1E29A /* SongInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC712DD1D0F0CD100B1E29A /* SongInfo.m */; };
 		BDC712E31D0F1BF000B1E29A /* SongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC712E11D0F1BF000B1E29A /* SongCell.m */; };
@@ -94,15 +69,9 @@
 		086C00501D9237590002B069 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0898FC1A1D8AFAD2002EFE59 /* RecorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecorderVC.h; sourceTree = "<group>"; };
 		0898FC1B1D8AFAD2002EFE59 /* RecorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecorderVC.m; sourceTree = "<group>"; };
-		0898FC1E1D8BC703002EFE59 /* bg_HomeView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_HomeView.png; sourceTree = "<group>"; };
 		0898FC1F1D8BC703002EFE59 /* bt_Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_Play.png; sourceTree = "<group>"; };
 		0898FC201D8BC703002EFE59 /* bt_Record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_Record.png; sourceTree = "<group>"; };
 		0898FC211D8BC703002EFE59 /* bt_Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_Stop.png; sourceTree = "<group>"; };
-		0898FC221D8BC703002EFE59 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		0898FC231D8BC703002EFE59 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		0898FC241D8BC703002EFE59 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		0898FC251D8BC703002EFE59 /* txt_Playback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = txt_Playback.png; sourceTree = "<group>"; };
-		0898FC261D8BC703002EFE59 /* txt_ReadMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = txt_ReadMe.png; sourceTree = "<group>"; };
 		08C13A971D9FE86F002FF09E /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
 		08C13A981D9FE86F002FF09E /* Gotham-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-BlackItalic.otf"; sourceTree = "<group>"; };
 		08C13A991D9FE86F002FF09E /* Gotham-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold.otf"; sourceTree = "<group>"; };
@@ -132,20 +101,6 @@
 		08E7EF3E1DA8F1C100F03E70 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCircularProgressBarView.h; sourceTree = "<group>"; };
 		08E7EF3F1DA8F1C100F03E70 /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCircularProgressBarView.m; sourceTree = "<group>"; };
 		BD01F81E1D1071100078E0C3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BD01F8221D10717B0078E0C3 /* background-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient.png"; sourceTree = "<group>"; };
-		BD01F8231D10717B0078E0C3 /* background-gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-gradient@2x.png"; sourceTree = "<group>"; };
-		BD01F8241D10717B0078E0C3 /* button-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-background.png"; sourceTree = "<group>"; };
-		BD01F8251D10717B0078E0C3 /* button-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-background@2x.png"; sourceTree = "<group>"; };
-		BD01F8261D10717B0078E0C3 /* tutorial_background_00@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_00@2x.jpg"; sourceTree = "<group>"; };
-		BD01F8271D10717B0078E0C3 /* tutorial_background_01@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_01@2x.jpg"; sourceTree = "<group>"; };
-		BD01F8281D10717B0078E0C3 /* tutorial_background_02@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_02@2x.jpg"; sourceTree = "<group>"; };
-		BD01F8291D10717B0078E0C3 /* tutorial_background_03@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_03@2x.jpg"; sourceTree = "<group>"; };
-		BD01F82A1D10717B0078E0C3 /* tutorial_background_04@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_04@2x.jpg"; sourceTree = "<group>"; };
-		BD01F82B1D10717B0078E0C3 /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
-		BD01F82C1D10717B0078E0C3 /* MYIntroductionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionPanel.m; sourceTree = "<group>"; };
-		BD01F82D1D10717B0078E0C3 /* MYIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionView.h; sourceTree = "<group>"; };
-		BD01F82E1D10717B0078E0C3 /* MYIntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionView.m; sourceTree = "<group>"; };
-		BD01F83A1D10786E0078E0C3 /* SampleHeaderImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SampleHeaderImage.png; sourceTree = "<group>"; };
 		BD01F83D1D11A5B20078E0C3 /* PCSEQVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCSEQVisualizer.h; sourceTree = "<group>"; };
 		BD01F83E1D11A5B20078E0C3 /* PCSEQVisualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCSEQVisualizer.m; sourceTree = "<group>"; };
 		BD01F83F1D11A5B20078E0C3 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -171,13 +126,6 @@
 		BDC712881D0BF4C100B1E29A /* TonesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TonesVC.m; sourceTree = "<group>"; };
 		BDC7128A1D0BF4E000B1E29A /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
 		BDC7128B1D0BF4E000B1E29A /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
-		BDC7128F1D0C518600B1E29A /* Thorne1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne1.m4a; sourceTree = "<group>"; };
-		BDC712901D0C518600B1E29A /* Thorne2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne2.m4a; sourceTree = "<group>"; };
-		BDC712911D0C518600B1E29A /* Thorne3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne3.m4a; sourceTree = "<group>"; };
-		BDC712921D0C518600B1E29A /* Thorne4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne4.m4a; sourceTree = "<group>"; };
-		BDC712931D0C518600B1E29A /* Thorne5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne5.m4a; sourceTree = "<group>"; };
-		BDC712941D0C518600B1E29A /* Thorne6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne6.m4a; sourceTree = "<group>"; };
-		BDC712951D0C518600B1E29A /* Thorne7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thorne7.m4a; sourceTree = "<group>"; };
 		BDC712D81D0EFF4F00B1E29A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BDC712DC1D0F0CD100B1E29A /* SongInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongInfo.h; sourceTree = "<group>"; };
 		BDC712DD1D0F0CD100B1E29A /* SongInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongInfo.m; sourceTree = "<group>"; };
@@ -219,15 +167,9 @@
 		0898FC1D1D8BC703002EFE59 /* MisslaneousImages */ = {
 			isa = PBXGroup;
 			children = (
-				0898FC1E1D8BC703002EFE59 /* bg_HomeView.png */,
 				0898FC1F1D8BC703002EFE59 /* bt_Play.png */,
 				0898FC201D8BC703002EFE59 /* bt_Record.png */,
 				0898FC211D8BC703002EFE59 /* bt_Stop.png */,
-				0898FC221D8BC703002EFE59 /* Default-568h@2x.png */,
-				0898FC231D8BC703002EFE59 /* Default.png */,
-				0898FC241D8BC703002EFE59 /* Default@2x.png */,
-				0898FC251D8BC703002EFE59 /* txt_Playback.png */,
-				0898FC261D8BC703002EFE59 /* txt_ReadMe.png */,
 			);
 			path = MisslaneousImages;
 			sourceTree = "<group>";
@@ -304,35 +246,6 @@
 			path = Progress;
 			sourceTree = "<group>";
 		};
-		BD01F8201D10717B0078E0C3 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				BD01F8211D10717B0078E0C3 /* Images */,
-				BD01F82B1D10717B0078E0C3 /* MYIntroductionPanel.h */,
-				BD01F82C1D10717B0078E0C3 /* MYIntroductionPanel.m */,
-				BD01F82D1D10717B0078E0C3 /* MYIntroductionView.h */,
-				BD01F82E1D10717B0078E0C3 /* MYIntroductionView.m */,
-			);
-			path = Tutorial;
-			sourceTree = "<group>";
-		};
-		BD01F8211D10717B0078E0C3 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				BD01F83A1D10786E0078E0C3 /* SampleHeaderImage.png */,
-				BD01F8221D10717B0078E0C3 /* background-gradient.png */,
-				BD01F8231D10717B0078E0C3 /* background-gradient@2x.png */,
-				BD01F8241D10717B0078E0C3 /* button-background.png */,
-				BD01F8251D10717B0078E0C3 /* button-background@2x.png */,
-				BD01F8261D10717B0078E0C3 /* tutorial_background_00@2x.jpg */,
-				BD01F8271D10717B0078E0C3 /* tutorial_background_01@2x.jpg */,
-				BD01F8281D10717B0078E0C3 /* tutorial_background_02@2x.jpg */,
-				BD01F8291D10717B0078E0C3 /* tutorial_background_03@2x.jpg */,
-				BD01F82A1D10717B0078E0C3 /* tutorial_background_04@2x.jpg */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		BD01F83C1D11A5B20078E0C3 /* BarVisualizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,20 +302,6 @@
 			path = "Mediation Adapters";
 			sourceTree = "<group>";
 		};
-		BDC7128D1D0C518600B1E29A /* songs */ = {
-			isa = PBXGroup;
-			children = (
-				BDC7128F1D0C518600B1E29A /* Thorne1.m4a */,
-				BDC712901D0C518600B1E29A /* Thorne2.m4a */,
-				BDC712911D0C518600B1E29A /* Thorne3.m4a */,
-				BDC712921D0C518600B1E29A /* Thorne4.m4a */,
-				BDC712931D0C518600B1E29A /* Thorne5.m4a */,
-				BDC712941D0C518600B1E29A /* Thorne6.m4a */,
-				BDC712951D0C518600B1E29A /* Thorne7.m4a */,
-			);
-			path = songs;
-			sourceTree = "<group>";
-		};
 		BDC712DF1D0F1BC900B1E29A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,9 +344,7 @@
 				08D9E6E91D899B1C00810E64 /* AudioCropper */,
 				BD01F84A1D11BD5C0078E0C3 /* Wave */,
 				BD01F83C1D11A5B20078E0C3 /* BarVisualizer */,
-				BD01F8201D10717B0078E0C3 /* Tutorial */,
 				BDC712DF1D0F1BC900B1E29A /* Cell */,
-				BDC7128D1D0C518600B1E29A /* songs */,
 				D48FFB7A1D00932C008D4E74 /* BJRangeSliderWithProgress */,
 				D48FFB581D0084A0008D4E74 /* AppDelegate.h */,
 				D48FFB591D0084A0008D4E74 /* AppDelegate.m */,
@@ -561,47 +458,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDC712981D0C518600B1E29A /* Thorne2.m4a in Resources */,
-				BD01F82F1D10717B0078E0C3 /* background-gradient.png in Resources */,
 				BDC712E41D0F1BF000B1E29A /* SongCell.xib in Resources */,
 				08C13AA41D9FE86F002FF09E /* Gotham-BoldItalic.otf in Resources */,
-				BDC7129A1D0C518600B1E29A /* Thorne4.m4a in Resources */,
-				BDC712971D0C518600B1E29A /* Thorne1.m4a in Resources */,
 				08C13AA51D9FE86F002FF09E /* Gotham-Book.otf in Resources */,
 				D48FFB7E1D00933A008D4E74 /* BJRangeSlider.bundle in Resources */,
-				BD01F8361D10717B0078E0C3 /* tutorial_background_03@2x.jpg in Resources */,
-				BD01F8351D10717B0078E0C3 /* tutorial_background_02@2x.jpg in Resources */,
-				BD01F8321D10717B0078E0C3 /* button-background@2x.png in Resources */,
-				0898FC2B1D8BC703002EFE59 /* Default-568h@2x.png in Resources */,
-				0898FC2F1D8BC703002EFE59 /* txt_ReadMe.png in Resources */,
-				0898FC2C1D8BC703002EFE59 /* Default.png in Resources */,
 				08C13AA91D9FE86F002FF09E /* Gotham-Medium.otf in Resources */,
-				BD01F8341D10717B0078E0C3 /* tutorial_background_01@2x.jpg in Resources */,
-				0898FC2D1D8BC703002EFE59 /* Default@2x.png in Resources */,
 				0898FC281D8BC703002EFE59 /* bt_Play.png in Resources */,
-				0898FC271D8BC703002EFE59 /* bg_HomeView.png in Resources */,
 				BD64DEBF1DA2C1D00071F188 /* README.txt in Resources */,
-				BDC7129C1D0C518600B1E29A /* Thorne6.m4a in Resources */,
 				08C13AA11D9FE86F002FF09E /* Gotham-Black.otf in Resources */,
-				BD01F8331D10717B0078E0C3 /* tutorial_background_00@2x.jpg in Resources */,
-				BD01F8311D10717B0078E0C3 /* button-background.png in Resources */,
 				0898FC2A1D8BC703002EFE59 /* bt_Stop.png in Resources */,
-				0898FC2E1D8BC703002EFE59 /* txt_Playback.png in Resources */,
-				BD01F8301D10717B0078E0C3 /* background-gradient@2x.png in Resources */,
-				BDC712991D0C518600B1E29A /* Thorne3.m4a in Resources */,
 				08C13AA81D9FE86F002FF09E /* Gotham-LightItalic.otf in Resources */,
 				086C00511D9237590002B069 /* Launch Screen.storyboard in Resources */,
 				D48FFB621D0084A0008D4E74 /* Assets.xcassets in Resources */,
-				BD01F8371D10717B0078E0C3 /* tutorial_background_04@2x.jpg in Resources */,
 				D48FFB601D0084A0008D4E74 /* Main.storyboard in Resources */,
 				08C13AA21D9FE86F002FF09E /* Gotham-BlackItalic.otf in Resources */,
 				0898FC291D8BC703002EFE59 /* bt_Record.png in Resources */,
 				08C13AA71D9FE86F002FF09E /* Gotham-Light.otf in Resources */,
 				08C13AA61D9FE86F002FF09E /* Gotham-BookItalic.otf in Resources */,
-				BDC7129B1D0C518600B1E29A /* Thorne5.m4a in Resources */,
-				BD01F83B1D10786E0078E0C3 /* SampleHeaderImage.png in Resources */,
 				08C13AA31D9FE86F002FF09E /* Gotham-Bold.otf in Resources */,
-				BDC7129D1D0C518600B1E29A /* Thorne7.m4a in Resources */,
 				BD64DEBE1DA2C1D00071F188 /* README.txt in Resources */,
 				08C13AAA1D9FE86F002FF09E /* Gotham-MediumItalic.otf in Resources */,
 			);
@@ -616,7 +490,6 @@
 			files = (
 				0898FC1C1D8AFAD2002EFE59 /* RecorderVC.m in Sources */,
 				080522F31D8D56A400A6142C /* SettingsVC.m in Sources */,
-				BD01F8381D10717B0078E0C3 /* MYIntroductionPanel.m in Sources */,
 				08D9E6F41D899B9600810E64 /* IQCropSelectionEndView.m in Sources */,
 				BDC712DE1D0F0CD100B1E29A /* SongInfo.m in Sources */,
 				D48FFB5D1D0084A0008D4E74 /* ViewController.m in Sources */,
@@ -624,7 +497,6 @@
 				08E7EF411DA8F1C200F03E70 /* MBCircularProgressBarView.m in Sources */,
 				BDC7128C1D0BF4E000B1E29A /* SettingVC.m in Sources */,
 				08C3CF161DAE40610078DBDD /* iRate.m in Sources */,
-				BD01F8391D10717B0078E0C3 /* MYIntroductionView.m in Sources */,
 				08D9E6FC1D899C1E00810E64 /* NSString+IQTimeIntervalFormatter.m in Sources */,
 				D48FFB5A1D0084A0008D4E74 /* AppDelegate.m in Sources */,
 				BDC712E31D0F1BF000B1E29A /* SongCell.m in Sources */,

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface TonesVC : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *lblNoFileStatus;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnNoFileStatus;
 
 @end
