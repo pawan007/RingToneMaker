@@ -91,9 +91,9 @@
         }
     }
     
-    if(indexPath.row==2)
+    if(indexPath.row==3)
     {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/developer/mobirizer/id1141913793"]];
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/developer/mobirizer/id1141913793"]];
     }
     // Then implement the delegate method
   
