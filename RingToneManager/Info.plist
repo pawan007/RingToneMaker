@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Smart Ringtonemaker</string>
+	<string>smartToneMaker</string>
 	<key>CFBundleExecutable</key>
 	<string>SmartRingtoneMaker</string>
 	<key>CFBundleIdentifier</key>

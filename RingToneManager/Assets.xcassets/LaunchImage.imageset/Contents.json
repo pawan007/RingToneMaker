@@ -6,19 +6,12 @@
     },
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "splash.png",
-=======
->>>>>>> 5b979091aa67fc06a9f975f16eaa39524448a2f4
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "splash-1.png",
-=======
-      "filename" : "splash.png",
->>>>>>> 5b979091aa67fc06a9f975f16eaa39524448a2f4
       "scale" : "3x"
     }
   ],
