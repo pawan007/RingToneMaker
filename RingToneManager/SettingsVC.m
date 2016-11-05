@@ -34,22 +34,33 @@
                                              selector:@selector(receiveFullAdsNotification:)
                                                  name:kFullAdShowNotification
                                                object:nil];
-    if(interstitial != nil) {
-        interstitial = nil;
-    }
+    //if(interstitial != nil) {
+     //   interstitial = nil;
+    //}
     //interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
     //GADRequest *request = [[GADRequest alloc]init];
     //[interstitial loadRequest:request];
-    //adViewSharedInstance    = [GADMasterViewController singleton];
-    //[adViewSharedInstance resetAdView:self AndDisplayView:_adView];
-    //CGRect frm = CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 50);
-    //_adView.frame = frm;
-   // [self.view addSubview:_adView];
+    adViewSharedInstance    = [GADMasterViewController singleton];
+    [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
+    CGRect frm = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-100, self.view.frame.size.width, 50);
+    _adView.frame = frm;
+    [self.navigationController.view addSubview:_adView];
 }
 - (void) viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kFullAdShowNotification object:nil];
     [_adView removeFromSuperview];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    CGRect frm = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-100, self.view.frame.size.width, 50);
+    _adView.frame = frm;
+    [self.navigationController.view setNeedsLayout];
+    [self.navigationController.view layoutIfNeeded];
+    
+    // Now modify bottomView's frame here
 }
 
 - (void)didReceiveMemoryWarning {

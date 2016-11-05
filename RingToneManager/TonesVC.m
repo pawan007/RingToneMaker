@@ -9,7 +9,7 @@
 #import "TonesVC.h"
 #import "SongInfo.h"
 #import "SongCell.h"
- #import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Constant.h"
 #import "Utility.h"
 #import "GADMasterViewController.h"
@@ -19,12 +19,10 @@
     int _currentPlaySongIndx;
     AVAudioPlayer *player;
     GADMasterViewController *adViewSharedInstance;
-    
-    GADInterstitial *interstitial;
 }
 @property(nonatomic,strong)NSMutableArray *songFilesList;
 @property (weak, nonatomic) IBOutlet GADBannerView *adView;
-
+@property(nonatomic, strong) GADInterstitial *interstitial;
 
 @end
 
@@ -34,7 +32,16 @@
     [super viewDidLoad];
     _currentPlaySongIndx = -1;
     _adView.backgroundColor = [UIColor clearColor];
-   }
+    
+    if(self.interstitial != nil) {
+        self.interstitial = nil;
+    }
+    self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
+    self.interstitial.delegate = self;
+    GADRequest *request = [[GADRequest alloc]init];
+    [self.interstitial loadRequest:request];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -62,19 +69,12 @@
                                                object:nil];
     adViewSharedInstance    = [GADMasterViewController singleton];
     [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
-    if(interstitial != nil) {
-        interstitial = nil;
-    }
-    interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
-    interstitial.delegate = self;
-    GADRequest *request = [[GADRequest alloc]init];
-    [interstitial loadRequest:request];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //[self showFullAds];
-    [self performSelector:(@selector(showFullAds)) withObject:nil afterDelay:0.3];
+    [self performSelector:(@selector(showFullAds)) withObject:nil afterDelay:0.2];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -85,18 +85,18 @@
     if(player)
     {
         [player stop];
-         player = nil;
+        player = nil;
         
         for( SongInfo *song in self.songFilesList)
         {
             song.isPlaying=false;
         }
-         [_tableView reloadData ];
+        [_tableView reloadData ];
     }
 }
 
 - (void) receiveFullAdsNotification:(NSNotification *) notification {
-   // [self showFullAds];
+    // [self showFullAds];
 }
 
 #pragma mark - Display Full Page Google Ads
@@ -110,8 +110,8 @@
         NSLog(@"Full ad counter = %d",adCounter);
         if(adCounter >= FULL_AD_COUNTER) {
             adCounter = 0;
-            if(interstitial.isReady) {
-                [interstitial presentFromRootViewController:self];
+            if(self.interstitial.isReady) {
+                [self.interstitial presentFromRootViewController:self];
             }
         }
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:adCounter] forKey:kFullUserDefault];
@@ -149,7 +149,7 @@
         [self.songFilesList removeObjectAtIndex:indexPath.row];
         [tableView reloadData]; // tell table to refresh now
         NSError *error;
-       //[[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:NULL];
+        //[[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:NULL];
         if(![[NSFileManager defaultManager] removeItemAtURL:[NSURL fileURLWithPath:song.songUrl] error:&error])
             NSLog(@"Error: %@", [error localizedDescription]);
         [Utility SaveAllFilesArray:self.songFilesList];
@@ -171,8 +171,8 @@
     }
     else
     {
-      for( SongInfo *song in self.songFilesList)
-       {  song.isPlaying=false; }
+        for( SongInfo *song in self.songFilesList)
+        {  song.isPlaying=false; }
         song.isPlaying=true;
         [self playTone:song];
     }
@@ -188,7 +188,7 @@
     }
     NSURL *url = [NSURL fileURLWithPath:song.songUrl];
     NSError *error;
-     player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     if (error)
     {
         NSLog(@"Error in audioPlayer: %@",[error localizedDescription]);
@@ -225,7 +225,7 @@
         [popup presentPopoverFromRect:CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/4, 0, 0)inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     
-  
+    
     //NSLog(@"selected Display Name : %@",song.displayName);
 }
 
@@ -235,7 +235,7 @@
 }
 - (IBAction)btnNoFilesClick:(id)sender {
     [self.tabBarController setSelectedIndex:0];
-
+    
 }
 
 
