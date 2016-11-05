@@ -14,15 +14,16 @@
 #import "Utility.h"
 #import "GADMasterViewController.h"
 
-@interface TonesVC ()<UITableViewDelegate, UITableViewDataSource, SongCellDelegate> {
+@interface TonesVC ()<UITableViewDelegate, UITableViewDataSource, SongCellDelegate, GADInterstitialDelegate> {
     __weak IBOutlet UITableView *_tableView;
     int _currentPlaySongIndx;
     AVAudioPlayer *player;
     GADMasterViewController *adViewSharedInstance;
-
+    
+    GADInterstitial *interstitial;
 }
 @property(nonatomic,strong)NSMutableArray *songFilesList;
-@property (weak, nonatomic) IBOutlet UIView *adView;
+@property (weak, nonatomic) IBOutlet GADBannerView *adView;
 
 
 @end
@@ -33,8 +34,6 @@
     [super viewDidLoad];
     _currentPlaySongIndx = -1;
     _adView.backgroundColor = [UIColor clearColor];
-    adViewSharedInstance    = [GADMasterViewController singleton];
-    [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
    }
 
 - (void)didReceiveMemoryWarning {
@@ -55,9 +54,33 @@
         self.btnNoFileStatus.hidden=false;
         _tableView.hidden=true;
     }
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveFullAdsNotification:)
+                                                 name:kFullAdShowNotification
+                                               object:nil];
+    adViewSharedInstance    = [GADMasterViewController singleton];
+    [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
+    if(interstitial != nil) {
+        interstitial = nil;
+    }
+    interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
+    interstitial.delegate = self;
+    GADRequest *request = [[GADRequest alloc]init];
+    [interstitial loadRequest:request];
 }
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //[self showFullAds];
+    [self performSelector:(@selector(showFullAds)) withObject:nil afterDelay:0.3];
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFullAdShowNotification object:nil];
+    
     [self SaveAllFilesArray];
     if(player)
     {
@@ -69,6 +92,30 @@
             song.isPlaying=false;
         }
          [_tableView reloadData ];
+    }
+}
+
+- (void) receiveFullAdsNotification:(NSNotification *) notification {
+   // [self showFullAds];
+}
+
+#pragma mark - Display Full Page Google Ads
+- (void)showFullAds {
+    if([[NSUserDefaults standardUserDefaults] objectForKey:kFullUserDefault] == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:kFullUserDefault];
+    }
+    else {
+        NSInteger adCounter = [[[NSUserDefaults standardUserDefaults] objectForKey:kFullUserDefault] intValue];
+        adCounter += 1;
+        NSLog(@"Full ad counter = %d",adCounter);
+        if(adCounter >= FULL_AD_COUNTER) {
+            adCounter = 0;
+            if(interstitial.isReady) {
+                [interstitial presentFromRootViewController:self];
+            }
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:adCounter] forKey:kFullUserDefault];
+        
     }
 }
 
@@ -153,6 +200,7 @@
 
 #pragma mark - Google BannerAd Custom delegate
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    NSLog(@"Ad change in TonesVC Class");
     for(UIView *tempView in _adView.subviews) {
         [tempView removeFromSuperview];
     }

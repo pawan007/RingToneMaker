@@ -36,6 +36,7 @@
     IQCropSelectionView *rightCropView;
     NSString *strSongTitle;
     GADMasterViewController *adViewSharedInstance;
+    GADInterstitial *interstitial;
     //Changes by Rishi
 }
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
@@ -52,7 +53,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblEndTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblSongName;
 
-@property (weak, nonatomic) IBOutlet UIView *adView;
+@property (weak, nonatomic) IBOutlet GADBannerView *adView;
 
 
 @end
@@ -77,6 +78,20 @@ double distance = 0.2;
     middleContainerView = [[UIView alloc] initWithFrame:frame];
     middleContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
     _adView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveFullAdsNotification:)
+                                                 name:kFullAdShowNotification
+                                               object:nil];
+    if(interstitial != nil) {
+        interstitial = nil;
+    }
+    interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
+    //GADRequest *request = [[GADRequest alloc]init];
+    //[interstitial loadRequest:request];
     adViewSharedInstance    = [GADMasterViewController singleton];
     [adViewSharedInstance resetAdView:self AndDisplayView:_adView];
 }
@@ -89,11 +104,19 @@ double distance = 0.2;
         [_audioPlayer stop];
     }
     self.FilesList=[Utility GetAllFiles];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFullAdShowNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void) receiveFullAdsNotification:(NSNotification *) notification {
+    if(interstitial.isReady) {
+        [interstitial presentFromRootViewController:self];
+    }
 }
 
 - (IBAction)searchMedia:(id)sender
@@ -177,6 +200,7 @@ double distance = 0.2;
 
 #pragma mark - Google BannerAd Custom delegate
 - (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    NSLog(@"Ad change in ViewController Class");
     for(UIView *tempView in _adView.subviews) {
         [tempView removeFromSuperview];
     }

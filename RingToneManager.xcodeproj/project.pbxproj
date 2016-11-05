@@ -40,8 +40,9 @@
 		BD01F8471D11A7BD0078E0C3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD01F8461D11A7BD0078E0C3 /* CoreGraphics.framework */; };
 		BD01F8491D11A84F0078E0C3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD01F8481D11A84F0078E0C3 /* UIKit.framework */; };
 		BD01F84D1D11BD5C0078E0C3 /* FDWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD01F84C1D11BD5C0078E0C3 /* FDWaveformView.m */; };
+		BD3AD0DE1DCD0EBE00F0C25C /* MyUIApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3AD0DD1DCD0EBE00F0C25C /* MyUIApp.m */; };
+		BD3AD0E01DCDA6C700F0C25C /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3AD0DF1DCDA6C700F0C25C /* GoogleMobileAds.framework */; };
 		BD64DEB11DA2B4CB0071F188 /* GADMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD64DEB01DA2B4CB0071F188 /* GADMasterViewController.m */; };
-		BD64DEBD1DA2C1D00071F188 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD64DEB31DA2C1D00071F188 /* GoogleMobileAds.framework */; };
 		BD64DEBE1DA2C1D00071F188 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD64DEBB1DA2C1D00071F188 /* README.txt */; };
 		BD64DEBF1DA2C1D00071F188 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BD64DEBC1DA2C1D00071F188 /* README.txt */; };
 		BDC712891D0BF4C100B1E29A /* TonesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC712881D0BF4C100B1E29A /* TonesVC.m */; };
@@ -111,9 +112,11 @@
 		BD01F8481D11A84F0078E0C3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BD01F84B1D11BD5C0078E0C3 /* FDWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDWaveformView.h; sourceTree = "<group>"; };
 		BD01F84C1D11BD5C0078E0C3 /* FDWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDWaveformView.m; sourceTree = "<group>"; };
+		BD3AD0DC1DCD0EBE00F0C25C /* MyUIApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUIApp.h; sourceTree = "<group>"; };
+		BD3AD0DD1DCD0EBE00F0C25C /* MyUIApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUIApp.m; sourceTree = "<group>"; };
+		BD3AD0DF1DCDA6C700F0C25C /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		BD64DEAF1DA2B4CB0071F188 /* GADMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMasterViewController.h; sourceTree = "<group>"; };
 		BD64DEB01DA2B4CB0071F188 /* GADMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMasterViewController.m; sourceTree = "<group>"; };
-		BD64DEB31DA2C1D00071F188 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		BD64DEB51DA2C1D00071F188 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
 		BD64DEB61DA2C1D00071F188 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
 		BD64DEB71DA2C1D00071F188 /* GADMediationAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdRequest.h; sourceTree = "<group>"; };
@@ -155,7 +158,7 @@
 			files = (
 				BD01F8491D11A84F0078E0C3 /* UIKit.framework in Frameworks */,
 				BD01F8471D11A7BD0078E0C3 /* CoreGraphics.framework in Frameworks */,
-				BD64DEBD1DA2C1D00071F188 /* GoogleMobileAds.framework in Frameworks */,
+				BD3AD0E01DCDA6C700F0C25C /* GoogleMobileAds.framework in Frameworks */,
 				BD01F81F1D1071110078E0C3 /* QuartzCore.framework in Frameworks */,
 				BDC712D91D0EFF4F00B1E29A /* AVFoundation.framework in Frameworks */,
 			);
@@ -268,6 +271,15 @@
 			path = Wave;
 			sourceTree = "<group>";
 		};
+		BD3AD0DB1DCD0EBE00F0C25C /* AllEvnt */ = {
+			isa = PBXGroup;
+			children = (
+				BD3AD0DC1DCD0EBE00F0C25C /* MyUIApp.h */,
+				BD3AD0DD1DCD0EBE00F0C25C /* MyUIApp.m */,
+			);
+			path = AllEvnt;
+			sourceTree = "<group>";
+		};
 		BD64DEAE1DA2B4CB0071F188 /* GoogleAdsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +293,7 @@
 		BD64DEB21DA2C1D00071F188 /* GoogleMobileAdsSDK */ = {
 			isa = PBXGroup;
 			children = (
-				BD64DEB31DA2C1D00071F188 /* GoogleMobileAds.framework */,
+				BD3AD0DF1DCDA6C700F0C25C /* GoogleMobileAds.framework */,
 				BD64DEB41DA2C1D00071F188 /* Mediation Adapters */,
 				BD64DEBC1DA2C1D00071F188 /* README.txt */,
 			);
@@ -336,6 +348,7 @@
 		D48FFB541D0084A0008D4E74 /* RingToneManager */ = {
 			isa = PBXGroup;
 			children = (
+				BD3AD0DB1DCD0EBE00F0C25C /* AllEvnt */,
 				08C3CF131DAE40610078DBDD /* iRate */,
 				08E7EF3B1DA8F1C100F03E70 /* Progress */,
 				BD64DEAE1DA2B4CB0071F188 /* GoogleAdsView */,
@@ -501,6 +514,7 @@
 				D48FFB5A1D0084A0008D4E74 /* AppDelegate.m in Sources */,
 				BDC712E31D0F1BF000B1E29A /* SongCell.m in Sources */,
 				BDC712891D0BF4C100B1E29A /* TonesVC.m in Sources */,
+				BD3AD0DE1DCD0EBE00F0C25C /* MyUIApp.m in Sources */,
 				D48FFB571D0084A0008D4E74 /* main.m in Sources */,
 				08D9E6F31D899B9600810E64 /* IQCropSelectionBeginView.m in Sources */,
 				080522F61D8ED78200A6142C /* Utility.m in Sources */,

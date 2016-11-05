@@ -9,8 +9,15 @@
 #import "SettingsVC.h"
 #import "SettingVC.h"
 #import "iRate/iRate.h"
+#import "GADMasterViewController.h"
+#import "Constant.h"
 
-@interface SettingsVC ()
+@interface SettingsVC () {
+    GADMasterViewController *adViewSharedInstance;
+    GADInterstitial *interstitial;
+}
+
+@property (weak, nonatomic) IBOutlet GADBannerView *adView;
 
 @end
 
@@ -21,10 +28,52 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveFullAdsNotification:)
+                                                 name:kFullAdShowNotification
+                                               object:nil];
+    if(interstitial != nil) {
+        interstitial = nil;
+    }
+    //interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
+    //GADRequest *request = [[GADRequest alloc]init];
+    //[interstitial loadRequest:request];
+    //adViewSharedInstance    = [GADMasterViewController singleton];
+    //[adViewSharedInstance resetAdView:self AndDisplayView:_adView];
+    //CGRect frm = CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 50);
+    //_adView.frame = frm;
+   // [self.view addSubview:_adView];
+}
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFullAdShowNotification object:nil];
+    [_adView removeFromSuperview];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void) receiveFullAdsNotification:(NSNotification *) notification {
+    if(interstitial.isReady) {
+        [interstitial presentFromRootViewController:self];
+    }
+}
+
+#pragma mark - Google BannerAd Custom delegate
+- (void)adViewDidReceiveAd:(GADBannerView *)adView {
+    NSLog(@"Ad change in Setting Class");
+    for(UIView *tempView in _adView.subviews) {
+        [tempView removeFromSuperview];
+    }
+    [_adView addSubview:adView];
+}
+
+
 
 #pragma mark - Table view data source
 
