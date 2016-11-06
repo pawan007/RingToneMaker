@@ -205,6 +205,7 @@
         [tempView removeFromSuperview];
     }
     [_adView addSubview:adView];
+    adView.center = CGPointMake(CGRectGetMidX(_adView.frame), adView.center.y);
 }
 
 

@@ -83,6 +83,10 @@ double distance = 0.2;
     _adView.backgroundColor = [UIColor clearColor];
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -208,6 +212,7 @@ double distance = 0.2;
         [tempView removeFromSuperview];
     }
     [_adView addSubview:adView];
+    adView.center = CGPointMake(CGRectGetMidX(_adView.frame), adView.center.y);
 }
 
 -(void)saveRingtone:(NSString*)RingToneFileName
@@ -598,7 +603,7 @@ double distance = 0.2;
 
 - (void)waveformViewDidRender:(IQ_FDWaveformView *)waveformViews;
 {
-     [self.maskView setHidden:true];
+    [self.maskView setHidden:true];
     self.btnPlay.hidden=false;
     self.btnSave.hidden=false;
     self.btnMusic.hidden=false;
