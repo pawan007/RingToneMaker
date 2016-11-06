@@ -23,6 +23,7 @@
 #import "Utility.h"
 #import "RecorderVC.h"
 #import "GADMasterViewController.h"
+#import "DGActivityIndicatorView.h"
 
 #define DOCUMENTS_FOLDER [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 
@@ -37,6 +38,8 @@
     NSString *strSongTitle;
     GADMasterViewController *adViewSharedInstance;
     GADInterstitial *interstitial;
+    UIActivityIndicatorView *waveLoadiingIndicatorView;
+    DGActivityIndicatorView *activityIndicatorView;
     //Changes by Rishi
 }
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
@@ -402,6 +405,23 @@ double distance = 0.2;
         waveformView.backgroundColor=[UIColor blackColor];
         waveformView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [middleContainerView addSubview:waveformView];
+        
+        waveLoadiingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        waveLoadiingIndicatorView.center = middleContainerView.center;
+        waveLoadiingIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+        //[middleContainerView addSubview:waveLoadiingIndicatorView];
+        
+        if(activityIndicatorView) {
+            activityIndicatorView = nil;
+        }
+        activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:(DGActivityIndicatorAnimationType)DGActivityIndicatorAnimationTypeLineScaleParty tintColor:[UIColor whiteColor]];
+        
+        //activityIndicatorView.frame = waveformView.frame; //CGRectMake(width * (i % 7), height * (int)(i / 7), width, height);
+        
+        activityIndicatorView.center = [middleContainerView convertPoint:middleContainerView.center fromView:middleContainerView.superview];
+        [middleContainerView addSubview:activityIndicatorView];
+        [activityIndicatorView startAnimating];
+
        // [self.maskView setHidden:true];
     }
     
@@ -427,8 +447,6 @@ double distance = 0.2;
         [rightCropView addGestureRecognizer:rightCropPanRecognizer];
     }
 }
-
-
 
 -(void)leftCropPanRecognizer:(UIPanGestureRecognizer*)panRecognizer
 {
@@ -570,6 +588,14 @@ double distance = 0.2;
   }
 }
 
+
+- (void)waveformViewWillLoad:(IQ_FDWaveformView *)waveformView {
+    [UIView animateWithDuration:0.1 animations:^{
+        // middleContainerView.alpha = 0.0;
+        [activityIndicatorView startAnimating];
+    }];
+}
+
 - (void)waveformViewDidRender:(IQ_FDWaveformView *)waveformViews;
 {
      [self.maskView setHidden:true];
@@ -579,7 +605,15 @@ double distance = 0.2;
     self.btnBigTone.hidden=true;
     self.lblSelectMusic.hidden=true;
     //waveformView.cropEndSamples = waveformView.totalSamples*(rightCropView.cropTime/_audioPlayer.duration);
+    [UIView animateWithDuration:0.1 animations:^{
+        activityIndicatorView.alpha = 0.0;
+        [activityIndicatorView stopAnimating];
+    }];
+
 }
 
 
 @end
+
+
+

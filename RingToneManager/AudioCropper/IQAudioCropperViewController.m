@@ -220,7 +220,7 @@
         waveformView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [middleContainerView addSubview:waveformView];
         
-        waveLoadiingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        waveLoadiingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         waveLoadiingIndicatorView.center = middleContainerView.center;
         waveLoadiingIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
         [visualEffectView.contentView addSubview:waveLoadiingIndicatorView];
@@ -666,11 +666,21 @@
 - (void)waveformViewWillLoad:(IQ_FDWaveformView *)waveformView
 {
 //    NSLog(@"%@",NSStringFromSelector(_cmd));
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [UIView animateWithDuration:0.1 animations:^{
+            middleContainerView.alpha = 0.0;
+            [waveLoadiingIndicatorView startAnimating];
+        }];
+    }];
 }
 
 - (void)waveformViewDidLoad:(IQ_FDWaveformView *)waveformView
 {
 //    NSLog(@"%@",NSStringFromSelector(_cmd));
+    [UIView animateWithDuration:0.1 animations:^{
+        middleContainerView.alpha = 1.0;
+        [waveLoadiingIndicatorView stopAnimating];
+    }];
 }
 
 - (void)waveformDidBeginPanning:(IQ_FDWaveformView *)waveformView
