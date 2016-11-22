@@ -57,6 +57,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSongName;
 
 @property (weak, nonatomic) IBOutlet GADBannerView *adView;
+@property(nonatomic, strong) GADInterstitial *interstitial;
+
 
 
 @end
@@ -81,6 +83,14 @@ double distance = 0.2;
     middleContainerView = [[UIView alloc] initWithFrame:frame];
     middleContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
     _adView.backgroundColor = [UIColor clearColor];
+    
+    if(self.interstitial != nil) {
+        self.interstitial = nil;
+    }
+    self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGoogleInterstitialAd];
+    self.interstitial.delegate = self;
+    GADRequest *request = [[GADRequest alloc]init];
+    [self.interstitial loadRequest:request];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -172,6 +182,10 @@ double distance = 0.2;
 
 - (IBAction)makeRingTone:(id)sender
 {
+    if([self showFullAds]) {
+        return;
+    }
+    
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"Name Your Ringtone"
                                           message:@""
@@ -397,24 +411,24 @@ double distance = 0.2;
    // middleContainerView.center = self.view.center;
     [self.view addSubview:middleContainerView];
     {
+        UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView * viewWithBlurredBackground = [[UIVisualEffectView alloc] initWithEffect:effect];
+        viewWithBlurredBackground.frame = CGRectMake(0, 10, CGRectGetWidth(middleContainerView.frame), 160);
+        [middleContainerView addSubview:viewWithBlurredBackground];
+        
         waveformView = [[IQ_FDWaveformView alloc] initWithFrame:CGRectMake(0, 10, CGRectGetWidth(middleContainerView.frame), 160)];
         waveformView.delegate = self;
         waveformView.center = CGPointMake(CGRectGetMidX(middleContainerView.bounds), CGRectGetMidY(middleContainerView.bounds));
         waveformView.audioURL = musichFilePath;
-        waveformView.wavesColor = [UIColor greenColor];
-        waveformView.progressColor =  [UIColor blueColor];
-        waveformView.cropColor = [UIColor blueColor];
+        waveformView.wavesColor = [UIColor cyanColor];
+        waveformView.progressColor =  [UIColor whiteColor];
+        waveformView.cropColor = [UIColor whiteColor];
         waveformView.doesAllowScroll = NO;
         waveformView.doesAllowScrubbing = YES;
         waveformView.doesAllowStretch = NO;
-        waveformView.backgroundColor=[UIColor blackColor];
+        waveformView.backgroundColor=[UIColor clearColor];
         waveformView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [middleContainerView addSubview:waveformView];
-        
-        waveLoadiingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        waveLoadiingIndicatorView.center = middleContainerView.center;
-        waveLoadiingIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
-        //[middleContainerView addSubview:waveLoadiingIndicatorView];
         
         if(activityIndicatorView) {
             activityIndicatorView = nil;
@@ -615,6 +629,30 @@ double distance = 0.2;
         [activityIndicatorView stopAnimating];
     }];
 
+}
+
+
+#pragma mark - Display Full Page Google Ads
+- (BOOL)showFullAds {
+    BOOL isFullAd = false;
+    if([[NSUserDefaults standardUserDefaults] objectForKey:kFullUserDefault] == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:kFullUserDefault];
+    }
+    else {
+        NSInteger adCounter = [[[NSUserDefaults standardUserDefaults] objectForKey:kFullUserDefault] intValue];
+        adCounter += 1;
+        NSLog(@"Full ad counter = %d",adCounter);
+        if(adCounter >= FULL_AD_COUNTER) {
+            adCounter = 0;
+            if(self.interstitial.isReady) {
+                isFullAd = true;
+                [self.interstitial presentFromRootViewController:self];
+            }
+        }
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:adCounter] forKey:kFullUserDefault];
+        
+    }
+    return isFullAd;
 }
 
 

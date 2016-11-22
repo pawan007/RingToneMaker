@@ -9,7 +9,7 @@
 #ifndef Constant_h
 #define Constant_h
 
-#define FULL_AD_COUNTER 3
+#define FULL_AD_COUNTER 5
 
 static NSString *const kToneExtention=@"m4r";
 static NSString *const kKey=@"AllFiles";
