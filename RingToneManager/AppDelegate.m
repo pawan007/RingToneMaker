@@ -28,7 +28,7 @@
     //smart tone
     [iRate sharedInstance].applicationBundleID=@"com.mobirizer.ringtonemaker";
     [iRate sharedInstance].appStoreID = 1161425556;
-    [iRate sharedInstance].ratingsURL =[NSURL URLWithString:@"https://itunes.apple.com/us/app/smartringtonemaker/id1161425556?ls=1&mt=8"];
+    [iRate sharedInstance].ratingsURL =[NSURL URLWithString:@"https://itunes.apple.com/us/app/itonemaker/id1179785088?ls=1&mt=8"];
     [iRate sharedInstance].onlyPromptIfLatestVersion = false;
     [iRate sharedInstance].previewMode = false;
     [iRate sharedInstance]. daysUntilPrompt = 1;

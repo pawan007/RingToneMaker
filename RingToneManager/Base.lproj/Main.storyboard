@@ -242,7 +242,7 @@
                             <constraint firstItem="mOb-iR-nA4" firstAttribute="leading" secondItem="RrX-ce-QyF" secondAttribute="leading" id="yRB-kC-bt9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="E8CD0D77-00ED-4786-8271-94BB19CBDAB6" id="KyV-54-aTJ"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="984D550E-3C87-4D5D-BDD1-DB453E456117" id="KyV-54-aTJ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="pageControl" destination="61m-jc-Hrb" id="5bo-dp-o9f"/>
@@ -396,11 +396,11 @@
                                     <constraint firstAttribute="height" constant="50" id="RDM-HG-tpD"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvM-1f-nFR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="SvM-1f-nFR">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="99" id="oDU-ej-5s8"/>
+                                    <constraint firstAttribute="height" constant="99" id="sPh-cM-7B5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="16"/>
                                 <state key="normal" title="No Saved Ringtone. Go to create your ringtone.">
                                     <color key="titleColor" red="0.56294459104537964" green="0.063490636646747589" blue="0.42262214422225952" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -423,20 +423,14 @@
                             <constraint firstItem="Ozk-Bn-PX1" firstAttribute="leading" secondItem="62e-uq-Aht" secondAttribute="leading" id="CHl-EM-dMn"/>
                             <constraint firstItem="0uY-k4-XUI" firstAttribute="top" secondItem="S5l-0E-KUb" secondAttribute="bottom" id="FLM-09-Vae"/>
                             <constraint firstAttribute="trailing" secondItem="Ozk-Bn-PX1" secondAttribute="trailing" id="PuW-2E-sr6"/>
-                            <constraint firstItem="SvM-1f-nFR" firstAttribute="centerX" secondItem="62e-uq-Aht" secondAttribute="centerX" id="S9j-4h-F3x"/>
-                            <constraint firstItem="SvM-1f-nFR" firstAttribute="centerY" secondItem="62e-uq-Aht" secondAttribute="centerY" constant="-15" id="VXz-QM-vIy"/>
                             <constraint firstAttribute="trailing" secondItem="0uY-k4-XUI" secondAttribute="trailing" id="bye-cC-iyo"/>
-                            <constraint firstItem="SvM-1f-nFR" firstAttribute="centerY" secondItem="62e-uq-Aht" secondAttribute="centerY" id="fPM-Gx-5fT"/>
-                            <constraint firstItem="SvM-1f-nFR" firstAttribute="centerX" secondItem="62e-uq-Aht" secondAttribute="centerX" id="hqw-t7-OCM"/>
+                            <constraint firstItem="SvM-1f-nFR" firstAttribute="leading" secondItem="62e-uq-Aht" secondAttribute="leading" constant="10" id="ePz-ox-0Pa"/>
+                            <constraint firstItem="SvM-1f-nFR" firstAttribute="centerX" secondItem="62e-uq-Aht" secondAttribute="centerX" id="iOb-fi-qpo"/>
                             <constraint firstItem="Ozk-Bn-PX1" firstAttribute="centerX" secondItem="62e-uq-Aht" secondAttribute="centerX" id="n9n-2O-tPL"/>
+                            <constraint firstAttribute="trailing" secondItem="SvM-1f-nFR" secondAttribute="trailing" constant="10" id="xKB-PT-BHW"/>
+                            <constraint firstItem="SvM-1f-nFR" firstAttribute="centerY" secondItem="62e-uq-Aht" secondAttribute="centerY" id="xSn-3B-Zqg"/>
                             <constraint firstItem="Zqw-Qt-Oqe" firstAttribute="top" secondItem="0uY-k4-XUI" secondAttribute="bottom" constant="48" id="zbl-QD-95b"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="VXz-QM-vIy"/>
-                                <exclude reference="hqw-t7-OCM"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tones" image="Item2" id="h6K-TB-jZL"/>
                     <navigationItem key="navigationItem" title="Tones" id="1yZ-OP-jyM"/>
@@ -695,10 +689,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AboutCompany" width="540" height="960"/>
-        <image name="AboutProduct" width="360" height="640"/>
-        <image name="BG" width="320" height="569"/>
-        <image name="E8CD0D77-00ED-4786-8271-94BB19CBDAB6" width="19" height="21">
+        <image name="984D550E-3C87-4D5D-BDD1-DB453E456117" width="19" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -776,6 +767,9 @@ EAQQDBAPEBQQIxAnEC4QNhBDEEgQShBMEFEQWRBcEGEQaRBsEH4QgRCGAAAAAAAAAgEAAAAAAAAAQQAA
 AAAAAAAAAAAAAAAAEIg
 </mutableData>
         </image>
+        <image name="AboutCompany" width="540" height="960"/>
+        <image name="AboutProduct" width="360" height="640"/>
+        <image name="BG" width="320" height="569"/>
         <image name="Ic_Menu" width="19" height="21"/>
         <image name="Item1" width="19" height="21"/>
         <image name="Item2" width="19" height="21"/>
